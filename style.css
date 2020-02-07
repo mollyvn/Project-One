@@ -1,0 +1,22 @@
+.jumbotron {
+    background-color: rgb(68, 54, 85);
+    text-align: left;
+    color: white;
+    text-shadow: black;
+}
+
+.row {
+    margin: 10px;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+header {
+    text-align: center;
+}
