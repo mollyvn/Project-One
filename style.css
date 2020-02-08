@@ -1,8 +1,27 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+
 .jumbotron {
-    background-color: rgb(68, 54, 85);
+    /* background-color: #1d1e22; */
+    background-color: #393f4d;
     text-align: left;
-    color: white;
+    color: #feda6a;
     text-shadow: black;
+    text-align: center;
+    font-size: 1.8em;
+
+}
+
+h1{
+    font-size: 1.5em;
+}
+
+#jumboText{
+    color: #d4d4dc;
+
 }
 
 .row {
@@ -19,4 +38,13 @@ h3 {
 
 header {
     text-align: center;
+}
+
+body{
+    background-color: #d4d4dc;
+    font-size:1.3em;
+}
+
+.form-control{
+    border-color: #feda6a;
 }
