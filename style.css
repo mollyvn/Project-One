@@ -3,6 +3,11 @@
     text-align: left;
     color: white;
     text-shadow: black;
+    height: 450px;
+}
+
+h1 {
+    padding-top: 90px;
 }
 
 .row {
