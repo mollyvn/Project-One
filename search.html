@@ -20,19 +20,57 @@
             <h1>Know Your Vote</h1>
             <p id="jumboText">Representives in Elections</p>
         </div>
-        <div class= "container">
+
+        <div class="container">
         <div class="row">
             <div class="col-lg-12 justify-content-center">
-                <h4>Search</h4>
-                <div class="container"></div>
-                    <div class="parameter-name color-secondary">Address</div>
-                    <input type="text" placeholder="string" id="address" name="address" class="ng-pristine ng-valid ng-star-inserted ng-touched">
+                <hr>
+                <h2>Search</h2>
+                <hr>
+                    <!-- <div class="parameter-name color-secondary">Address</div>
+                    <input type="text" placeholder="string" id="address" name="address" class="ng-pristine ng-valid ng-star-inserted ng-touched"> -->
                     <div class="parameter-name color-secondary">Include Office</div>
                     <select id="includeOffices" name="includeOffices" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select>
                     <div class="parameter-name color-secondary">Levels</div>
                     <select id="level[0]" name="levels[0]" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select>
                     <div class="parameter-name color-secondary">Roles</div>
                     <select id="roles[0]" name="roles[0]" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select>
-                </div>
             <div>
         </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-12" id="search-results">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Results</h2>
+                        <hr>
+                    </div>
+                    <div class="panel-body" id="wellSection">
+                        <div class="well">
+                            <h3>Name of Representative</h3>
+                            <img src="https://placehold.it/200x200" alt="#">
+                            <h4>Office</h4>
+                            <h4>Bla</h4>      
+                    </div>
+                              
+                </div>
+            </div>
+        </div>
+     </div>
+    
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+        <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI&callback=initMap"
+        type="text/javascript"></script> -->
+        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/build/ol.js"></script>
+
+    </body>
+</html>
+        
