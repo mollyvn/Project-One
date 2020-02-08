@@ -5,7 +5,8 @@ $(document).ready(function() {
     //=============================================================================
     
     var APIkey= "?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI";
-    
+    var map;
+
     //$("#search");
     //if using whole address add %20 between all spaces
     // var defaultAddress="209%20W.%20Wilder%20Ave.%20Tampa%20FL"
@@ -57,7 +58,27 @@ $(document).ready(function() {
     //======================================
     //Functions
     //=============================================================================
-  
+    // initMap();
+    // function initMap() {
+    //     map= new google.maps.Map(document.getElementById('map'),{
+    //         //default latitude and longitude
+    //         center: {lat: -34.397, lng: 150.644},
+    //         zoom: 8
+    //     });
+    // };
+    var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([37.41, 8.82]),
+          zoom: 4
+        })
+      });
+
     
     
 
