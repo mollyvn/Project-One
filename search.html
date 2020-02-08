@@ -12,6 +12,8 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="style.css" />
         <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.css" rel ="stylesheet">
+
 
       
     </head>
@@ -27,14 +29,31 @@
                 <hr>
                 <h2>Search</h2>
                 <hr>
+                <div class="tile is-ancestor">
+                    <div class="tile is-4 is-vertical is-parent">
+                      <div class="tile is-child box">
+                        <p class="title">Include Office</p>
+                        <select id="includeOffices" name="includeOffices" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select>
+                        </div>
+                      <div class="tile is-child box">
+                        <p class="title">Levels</p>
+                        <select id="includeOffices" name="includeOffices" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select>
+                        </div>
+                    </div>
+                    <div class="tile is-parent">
+                      <div class="tile is-child box">
+                        <p class="title">Roles</p>
+                        <select id="roles[0]" name="roles[0]" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select> </div>
+                    </div>
+                  </div>
                     <!-- <div class="parameter-name color-secondary">Address</div>
                     <input type="text" placeholder="string" id="address" name="address" class="ng-pristine ng-valid ng-star-inserted ng-touched"> -->
-                    <div class="parameter-name color-secondary">Include Office</div>
+                    <!-- <div class="parameter-name color-secondary">Include Office</div>
                     <select id="includeOffices" name="includeOffices" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select>
                     <div class="parameter-name color-secondary">Levels</div>
                     <select id="level[0]" name="levels[0]" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select>
                     <div class="parameter-name color-secondary">Roles</div>
-                    <select id="roles[0]" name="roles[0]" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select>
+                    <select id="roles[0]" name="roles[0]" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select> -->
             <div>
         </div>
         <hr>
