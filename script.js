@@ -13,7 +13,6 @@ $(document).ready(function() {
     //$("#search");
     //if using whole address add %20 between all spaces
     var defaultAddress="209%20W.%20Wilder%20Ave.%20Tampa%20FL"
-    
     //using the zip code for now
     // var defaultAddress="33603";
     var defaultElectionID= "2000";
@@ -32,18 +31,18 @@ $(document).ready(function() {
     $.ajax({url: queryURLElection,
         method: "GET"
     }).then(function(response){  
-        console.log(queryURLElection);
-        console.log(response);
+        // console.log(queryURLElection);
+        // console.log(response);
     });
     //voter Info
     $.ajax({url: queryURLVoterInfo,
         method: "GET"
     }).then(function(response){  
-        console.log(queryURLVoterInfo);
-        console.log(response);
+        // console.log(queryURLVoterInfo);
+        // console.log(response);
 
         //polling location address
-        console.log(response.pollingLocations[0].address);
+        // console.log(response.pollingLocations[0].address);
 
     });
   
@@ -62,6 +61,26 @@ $(document).ready(function() {
           zoom: 4
         })
       });
+
+
+      $("#search").on("click", function(e){
+          e.preventDefault();
+          console.log("search btn clicked");
+        var enteredAddress=encodeURI($("#address").val().trim());
+        console.log(enteredAddress);
+
+        var enteredAddressURL = queryBaseURL +"representatives" + APIkey+  "&address=" + enteredAddress;
+        console.log(enteredAddressURL);
+
+        runQuery(enteredAddressURL);
+
+        if(enteredAddress===""){
+            return;
+        }
+        $("#wellSection").empty();
+
+        return false;
+      })
     
     //======================================
     //Functions
@@ -69,6 +88,12 @@ $(document).ready(function() {
       //get representative infor from address
 
       //representative url
+
+      function runQuery(queryURLRepresentatives){
+        console.log("runQuery runs");
+
+      
+    
        //Representatives
     $.ajax({url: queryURLRepresentatives,
         method: "GET"
@@ -91,8 +116,7 @@ $(document).ready(function() {
 
         //put into HTML
         var wellSection=$('<div>');
-        wellSection.addClass("card is-horizontal");
-
+        wellSection.addClass("card");
         wellSection.attr('id', 'repWell-'+i);
         $('#wellSection').append(wellSection);
 
@@ -102,26 +126,32 @@ $(document).ready(function() {
 
         }
 
-        if(response.officials[i].urls[0]=="null" || response.officials[i].urls[0]==="undefined"){
-            console.log(response.officials[i].name);
-            $("#repWell-"+i).append("<h4>No URL available</h4>");
+        // if(response.officials[i].urls[0]=="null" || response.officials[i].urls[0]==="undefined"){
+        //     console.log(response.officials[i].name);
+        //     $("#repWell-"+i).append("<h4>No URL available</h4>");
 
-        }
+        // }
 
         //Attach content to approp well
         $("#repWell-"+i).append("<div class='card-image'><figure class='image is-128x128'><img src=" +response.officials[i].photoUrl+"></figure></div>");
+        $("#repWell-"+i).append("<div class='card-content'><div class='content>");
         $("#repWell-"+i).append("<h4>Office: "+response.offices[i].name+"</h4>");
         // $("#repWell-"+i).append("<div class='card-content'><div class='media'><div class='media-content'><h4>Office: "+response.offices[i].name+"</h4>");
 
         $("#repWell-"+i).append("<h4>Name: "+response.officials[i].name+"</h4>");
         $("#repWell-"+i).append("<h4>Party: "+response.officials[i].party+"</h4>");
 
-        $("#repWell-"+i).append("<a href=" + response.officials[i].urls[0]+">"+response.officials[i].urls[0] +"</a>");
+        // $("#repWell-"+i).append("<a href=" + response.officials[i].urls[0]+">"+response.officials[i].urls[0] +"</a>");
+        $("#repWell-"+i).append("<br></div></div>");
+
         // class='is-rounded' 
     }
+    
 
 
 });
+
+}
       
 
     //======================================
