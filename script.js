@@ -25,7 +25,7 @@ $(document).ready(function() {
     var queryURLVoterInfo= queryBaseURL + "voterinfo" +APIkey + "&address=" +defaultAddress + "&electionId=" +defaultElectionID;
     // var queryURLDivisions= queryBaseURL + "division" +APIkey + "&address=" +defaultAddress;
     var queryURLRepresentatives= queryBaseURL +"representatives" + APIkey+ "&address=" +defaultAddress;
-
+    var queryURLSearchPage = queryBaseURL +"representatives" + APIkey+ "&address="
     //Test URLs and console log
     //Election
     $.ajax({url: queryURLElection,
@@ -67,27 +67,39 @@ $(document).ready(function() {
           e.preventDefault();
           console.log("search btn clicked");
         var enteredAddress=encodeURI($("#address").val().trim());
+        var levels =$("#levels").val();
+        var roles=$("#roles").val();
         console.log(enteredAddress);
+        console.log(levels);
+        console.log(roles);
 
-        var enteredAddressURL = queryBaseURL +"representatives" + APIkey+  "&address=" + enteredAddress;
-        console.log(enteredAddressURL);
-
-        runQuery(enteredAddressURL);
+        var enteredAddressURL = queryBaseURL +"representatives" + APIkey+  "&address=" + enteredAddress + "&levels=" +levels+"&roles="+roles;
 
         if(enteredAddress===""){
             return;
         }
-        $("#wellSection").empty();
+        // $("#wellSection").empty();
 
+        if(levels==="Choose..."&&roles=="Choose..."){
+            enteredAddressURL = queryBaseURL +"representatives" + APIkey+  "&address=" + enteredAddress;
+        } else if(levels==="Choose..."){
+            enteredAddressURL = queryBaseURL +"representatives" + APIkey+  "&address=" + enteredAddress +"&roles="+roles;
+        } else if (roles==="Choose..."){
+            enteredAddressURL = queryBaseURL +"representatives" + APIkey+  "&address=" + enteredAddress + "&levels=" +levels;
+        };
+
+        console.log(enteredAddressURL);
+
+
+        runQuery(enteredAddressURL);
         return false;
       })
     
     //======================================
     //Functions
     //=============================================================================
-      //get representative infor from address
 
-      //representative url
+      //representative address function 
 
       function runQuery(queryURLRepresentatives){
         console.log("runQuery runs");
@@ -101,11 +113,11 @@ $(document).ready(function() {
         console.log(queryURLRepresentatives);
         console.log(response);
         //gives the info of the representative- in this example the highest ranked representative the president
-        console.log(response.offices[0].name);
-        console.log(response.officials[0].name);
-        console.log(response.officials[0].photoUrl);
-        console.log(response.officials[0].party);
-        console.log(response.officials.length);
+        // console.log(response.offices[0].name);
+        // console.log(response.officials[0].name);
+        // console.log(response.officials[0].photoUrl);
+        // console.log(response.officials[0].party);
+        // console.log(response.officials.length);
 
     
         //Result section representative test with default address
@@ -136,7 +148,6 @@ $(document).ready(function() {
         $("#repWell-"+i).append("<div class='card-image'><figure class='image is-128x128'><img src=" +response.officials[i].photoUrl+"></figure></div>");
         $("#repWell-"+i).append("<div class='card-content'><div class='content>");
         $("#repWell-"+i).append("<h4>Office: "+response.offices[i].name+"</h4>");
-        // $("#repWell-"+i).append("<div class='card-content'><div class='media'><div class='media-content'><h4>Office: "+response.offices[i].name+"</h4>");
 
         $("#repWell-"+i).append("<h4>Name: "+response.officials[i].name+"</h4>");
         $("#repWell-"+i).append("<h4>Party: "+response.officials[i].party+"</h4>");
@@ -144,7 +155,6 @@ $(document).ready(function() {
         // $("#repWell-"+i).append("<a href=" + response.officials[i].urls[0]+">"+response.officials[i].urls[0] +"</a>");
         $("#repWell-"+i).append("<br></div></div>");
 
-        // class='is-rounded' 
     }
     
 
