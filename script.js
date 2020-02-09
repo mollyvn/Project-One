@@ -57,7 +57,7 @@ $(document).ready(function() {
           })
         ],
         view: new ol.View({
-          center: ol.proj.fromLonLat([37.41, 8.82]),
+          center: ol.proj.fromLonLat([35.47, 78.46]),
           zoom: 4
         })
       });
@@ -74,7 +74,6 @@ $(document).ready(function() {
         console.log(roles);
 
         var enteredAddressURL = queryBaseURL +"representatives" + APIkey+  "&address=" + enteredAddress + "&levels=" +levels+"&roles="+roles;
-
         if(enteredAddress===""){
             return;
         }
@@ -91,7 +90,11 @@ $(document).ready(function() {
         console.log(enteredAddressURL);
 
 
-        runQuery(enteredAddressURL);
+        runRepresentativeQuery(enteredAddressURL);
+
+        var queryURLElection= queryBaseURL + "elections" +APIkey;
+
+        runElectionQuery(queryURLElection);
         return false;
       })
     
@@ -101,7 +104,7 @@ $(document).ready(function() {
 
       //representative address function 
 
-      function runQuery(queryURLRepresentatives){
+      function runRepresentativeQuery(queryURLRepresentatives){
         console.log("runQuery runs");
 
       
@@ -162,6 +165,39 @@ $(document).ready(function() {
 });
 
 }
+
+function runElectionQuery(){
+    var queryURLElection= queryBaseURL + "elections" +APIkey;
+    $.ajax({url: queryURLElection,
+        method: "GET"
+    }).then(function(response){  
+        console.log(queryURLElection);
+        console.log(response);
+
+        $("#electionSection").empty();
+
+        for (var i=0; i<response.elections.length; i++){
+    
+            //put into HTML
+            var electionSection=$('<div>');
+            electionSection.addClass("card");
+            electionSection.attr('data-election', 'elecWell-'+i);
+            $('#electionSection').append(electionSection);
+    
+    
+            //Attach content to approp well
+            $("#elecWell-"+i).append("<h2>Election: "+ response.elections[i].name+"</h2>");
+            $("#elecWell-"+i).append("<h2>Election Day: "+ response.elections[i].electionDay+"</h2>");
+    
+        }
+        
+    
+    
+    });
+    
+}
+
+runElectionQuery();
       
 
     //======================================

@@ -29,11 +29,15 @@
                 <h2>About</h2>
         <div class="container" id="about">
             <p>
-                There are many U.S. elections throughout the year, and both election information and political geography can shift with time.
+                There are many U.S. elections throughout the year, and both election information and political geography can shift with time. Click here to see upcoming elections.
                 <br>
+                <!--btn connects with election page-->
+                <button class="button is-rounded" type="search" id="election"><i class="fa fa-search"></i>See Elections</button>
                 <br>
-                This is an application designed to look up who a user’s elected representatives are locally and across the United States. Based on the user’s address, the application can find all the local, county, state, and federal official who represent the user in government. 
+                This is an application designed to look up who a user’s elected representatives are locally and across the United States. Based on the user’s address, the application can find all the local, county, state, and federal official who represent the user in government. Click here to get information about your representatives
                 <br>
+                <!--button connects with search.html-->
+                <button class="button is-rounded" type="search" id="representative">Your Representatives</button>
                 <br>
                 Knowing who these representatives are and informing yourself about elections before voting is the most effective way to change how our government works.
             </p>
@@ -46,6 +50,8 @@
 
                 <h3>Enter your Address to See Your Polling Place Location</h3>
                 <input type="text" class="form-control" type="search" aria-label="Search">
+                <button class="button is-rounded" type="search" id="search"><i class="fa fa-search"></i>Search</button>
+
                 <hr>
                 <h3>Polling Place for your Address</h3>
                 <div class="map" id="map"></div>
