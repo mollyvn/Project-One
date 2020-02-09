@@ -18,65 +18,101 @@
       
     </head>
     <body>
-        <div class="jumbotron mx-auto">
+    <header>
+        <div class="jumbotron">
             <h1>Know Your Vote</h1>
             <p id="jumboText">Representives in Elections</p>
         </div>
+    </header>
 
-        <div class="container">
-        <div class="row">
-            <div class="col-lg-12 justify-content-center">
-                <hr>
-                <h2>Search</h2>
-                <hr>
-                <div class="tile is-ancestor">
-                    <div class="tile is-4 is-vertical is-parent">
-                      <div class="tile is-child box">
-                        <p class="title">Include Office</p>
-                        <select id="includeOffices" name="includeOffices" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select>
-                        </div>
-                      <div class="tile is-child box">
-                        <p class="title">Levels</p>
-                        <select id="includeOffices" name="includeOffices" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select>
-                        </div>
-                    </div>
-                    <div class="tile is-parent">
-                      <div class="tile is-child box">
-                        <p class="title">Roles</p>
-                        <select id="roles[0]" name="roles[0]" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select> </div>
-                    </div>
-                  </div>
-                    <!-- <div class="parameter-name color-secondary">Address</div>
-                    <input type="text" placeholder="string" id="address" name="address" class="ng-pristine ng-valid ng-star-inserted ng-touched"> -->
-                    <!-- <div class="parameter-name color-secondary">Include Office</div>
-                    <select id="includeOffices" name="includeOffices" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select>
-                    <div class="parameter-name color-secondary">Levels</div>
-                    <select id="level[0]" name="levels[0]" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select>
-                    <div class="parameter-name color-secondary">Roles</div>
-                    <select id="roles[0]" name="roles[0]" class="ng-pristine ng-valid ng-star-inserted ng-touched"></select> -->
-            <div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-lg-12" id="search-results">
+    <body>
+        <div class="row" id="upperRow">
+
+            <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title">Results</h2>
-                        <hr>
+                        <h3 class="panel-title">Search Parameters</h3>
                     </div>
-                    <div class="panel-body" id="wellSection">
-                        <div class="well">
-                            <h3>Name of Representative</h3>
-                            <img src="https://placehold.it/200x200" alt="#">
-                            <h4>Office</h4>
-                            <h4>Bla</h4>      
-                    </div>
-                              
+                    <div class="panel-body"></div>
+                    <form role="form">
+
+                    <div class="tile is-ancestor">
+                        <div class="tile is-12 is-vertical is-parent">
+                          <div class="tile is-child box">
+                             
+                                    <div class="form-group ">
+                                        <label for="search-term">Enter Address:</label>
+                                        <input type="text" class="form-control" id="address">
+                                        <!-- <button class="button is-rounded" type="submit" id="submitAddress"><i class="fa fa-search" aria-hidden="true"></i>Submit</button> -->
+
+                                    </div>
+                            </div>
+
+                             <!-- <div class="tile is-12 is-horizontal is-parent"> -->
+
+                            <div class="tile is-child box is-12">
+                                <div class="form-group">
+                                    <label class="mr-sm-2" for="sel1">Levels</label>
+                                    <select class="form-control" id="levels">
+                                        <option selected>Choose...</option>
+                                        <option value="administrativeArea1">administrative Area 1</option>
+                                        <option value="administrativeArea12">administrative Area 2</option>
+                                        <option value="locality">Locality</option>
+                                        <option value="regional">Regional</option>
+                                        <option value="country">Country</option>
+                                    
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="tile is-child box is-12">
+                                <div class="form-group">
+                                    <label class="mr-sm-2" for="sel1">Roles</label>
+                                    <select class="form-control" id="roles">
+                                    <option selected>Choose...</option>
+                                    <option value="deputyHeadOfGovernment">Deputy Head of Government</option>
+                                    <option value="executiveCouncil">aexecutive Council</option>
+                                    <option value="governmentOfficer">Government Officer</option>
+                                    <option id="headOfState">Head of State</option>
+                                    <option id="highestCourtJudge">Highest Court Judge</option>
+                                    <option id="judge">judge</option>
+                                    <option id="legislatorLowerBody">Legislator Lower Body</option>
+                                    <option id="legislatorUpperBody">Legislator Upper Body</option>
+                                    <option id="schoolBoard">School Board</option>
+                                    <option id="specialPurposeOfficer">Special Purpose Officer</option>
+                                
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            
+
+
+                          
+                        <button class="button is-rounded" type="submit" id="submit"><i class="fa fa-search" aria-hidden="true"></i>Submit</button>
+                        <button class="button is-rounded" type="clear" id="clear">Clear Results</button>
+                    </form>
+
+                
                 </div>
             </div>
         </div>
-     </div>
+            <!--Results-->
+            <div class="row" id="lowerRow">
     
+                <div class="col-lg-12" id="search-results">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Search Results</h3>
+                        </div>
+                        <div class="panel-body" id="wellSection">
+                        </div>
+                              
+                    </div>
+                </div>
+            </div>
+         
+       
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"

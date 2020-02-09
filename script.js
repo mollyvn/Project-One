@@ -1,4 +1,7 @@
-//<script src="script.js"></script> ---->add to your index
+//auto complete address needs to be done for address input field
+//address needs to be turned into lat and long to create a pin
+//polling place data needs to be pulled to create the pin
+
 $(document).ready(function() {
     //=============================================================================
     //Set up variables
@@ -9,10 +12,10 @@ $(document).ready(function() {
 
     //$("#search");
     //if using whole address add %20 between all spaces
-    // var defaultAddress="209%20W.%20Wilder%20Ave.%20Tampa%20FL"
+    var defaultAddress="209%20W.%20Wilder%20Ave.%20Tampa%20FL"
     
     //using the zip code for now
-    var defaultAddress="33603"
+    // var defaultAddress="33603";
     var defaultElectionID= "2000";
 
     var submitBtn =$("#submit");
@@ -39,33 +42,14 @@ $(document).ready(function() {
         console.log(queryURLVoterInfo);
         console.log(response);
 
-    });
-  
-    //Representatives
-    $.ajax({url: queryURLRepresentatives,
-        method: "GET"
-    }).then(function(response){  
-        console.log(queryURLRepresentatives);
-        console.log(response);
-        //gives the info of the representative- in this example the highest ranked representative the president
-        console.log(response.offices[0].name);
-        console.log(response.officials[0].name);
-        console.log(response.officials[0].photoUrl);
-        console.log(response.officials[0].party);
+        //polling location address
+        console.log(response.pollingLocations[0].address);
 
     });
-    
-    //======================================
-    //Functions
-    //=============================================================================
-    // initMap();
-    // function initMap() {
-    //     map= new google.maps.Map(document.getElementById('map'),{
-    //         //default latitude and longitude
-    //         center: {lat: -34.397, lng: 150.644},
-    //         zoom: 8
-    //     });
-    // };
+  
+   
+
+    //Map
     var map = new ol.Map({
         target: 'map',
         layers: [
@@ -78,8 +62,106 @@ $(document).ready(function() {
           zoom: 4
         })
       });
+    
+    //======================================
+    //Functions
+    //=============================================================================
+      //get representative infor from address
+
+      //representative url
+       //Representatives
+    $.ajax({url: queryURLRepresentatives,
+        method: "GET"
+    }).then(function(response){  
+        console.log(queryURLRepresentatives);
+        console.log(response);
+        //gives the info of the representative- in this example the highest ranked representative the president
+        console.log(response.offices[0].name);
+        console.log(response.officials[0].name);
+        console.log(response.officials[0].photoUrl);
+        console.log(response.officials[0].party);
+        console.log(response.officials.length);
 
     
+        //Result section representative test with default address
+    //clear well
+    $("#wellSection").empty();
+
+    for (var i=0; i<response.officials.length; i++){
+
+        //put into HTML
+        var wellSection=$('<div>');
+        wellSection.addClass("card is-horizontal");
+
+        wellSection.attr('id', 'repWell-'+i);
+        $('#wellSection').append(wellSection);
+
+        if(response.officials[i].photoUrl=== "null" || response.officials[i].photoUrl=== "undefined" ){
+            console.log(response.officials[i].name);
+            $("#repWell-"+i).append("<img src='http://placehold.it/128x128'>");
+
+        }
+
+        if(response.officials[i].urls[0]=="null" || response.officials[i].urls[0]==="undefined"){
+            console.log(response.officials[i].name);
+            $("#repWell-"+i).append("<h4>No URL available</h4>");
+
+        }
+
+        //Attach content to approp well
+        $("#repWell-"+i).append("<div class='card-image'><figure class='image is-128x128'><img src=" +response.officials[i].photoUrl+"></figure></div>");
+        $("#repWell-"+i).append("<h4>Office: "+response.offices[i].name+"</h4>");
+        // $("#repWell-"+i).append("<div class='card-content'><div class='media'><div class='media-content'><h4>Office: "+response.offices[i].name+"</h4>");
+
+        $("#repWell-"+i).append("<h4>Name: "+response.officials[i].name+"</h4>");
+        $("#repWell-"+i).append("<h4>Party: "+response.officials[i].party+"</h4>");
+
+        $("#repWell-"+i).append("<a href=" + response.officials[i].urls[0]+">"+response.officials[i].urls[0] +"</a>");
+        // class='is-rounded' 
+    }
+
+
+});
+      
+
+    //======================================
+    //Event Handlers
+    //=============================================================================
+    // $("#searchbtn").on("click", function(){
+    //     //get address fom input field
+    //     //use address to get info about upcoming elections
+
+    // function test(){
+
+   
+    //     $.ajax({url: queryURLElection,
+    //         method: "GET"
+    //     }).then(function(response){  
+    //         console.log(queryURLElection);
+    //         console.log(response);
+    //     });
+
+    //     $("#wellSection").empty();
+
+    //         for (var i=0; i<response.elections.length; i++){
+
+    //             //put into HTML
+    //             var wellSection=$('<div>');
+    //             wellSection.addClass("well");
+    //             wellSection.attr('id', 'electionWell-'+i);
+    //             $('#wellSection').append(wellSection);
+
+    //             console.log(response.elections[i].name);
+    //             console.log(response.elections[i].electionDay);
+
+    //             $("#electionWell-"+i).append("<h5>"+response.elections[i].name+"</h5>");
+    //             $("#electionWell-"+i).append("<h5>"+response.elections[i].electionDay+"</h5>");
+
+    //         }
+    //     }
+    // test();
+
+    // })
     
 
  });
