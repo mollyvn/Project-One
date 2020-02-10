@@ -30,7 +30,7 @@
     <body>
         <div class="row" id="upperRow">
 
-            <div class="col-lg-12">
+            <div class="col-lg-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Search Parameters</h3>
@@ -45,6 +45,7 @@
                                     <label for="search-term">Enter Address:</label>
                                     <input type="text" class="form-control" id="address">
                                 </div>
+                                
                                 </div>
                                 
                             </div>
@@ -56,18 +57,24 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!--Results should show upcomign election, polling address and candidates. It works in console log but there is a bug that its not appending without throwing an error-->
-
-        <div class="row" id="lowerRow">
-    
-            <div class="col-lg-12" id="polling-results">
+            <div class="col-lg-4" id="elections">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Polling Location</h3>
+                        <h3 class="panel-title">Upcoming Election</h3>
                     </div>
-                    <div class="panel-body" id="elecSection">
+                    <div class="panel-body" >
+
+                        <div class="tile is-ancestor">
+                            <div class="tile is-12 is-vertical is-parent">
+                                <div class="tile is-child box"id="elecSection">
+                                    
+                                
+                                
+                                </div>
+                                
+                            </div>
+                        </div>
                     
                     
                     
@@ -75,6 +82,62 @@
          
                 </div>
             </div>
+
+            <div class="col-lg-4" id="polling">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Polling Locations</h3>
+                    </div>
+                    <div class="panel-body" >
+
+                        <div class="tile is-ancestor">
+                            <div class="tile is-12 is-vertical is-parent">
+                                <div class="tile is-child box"id="pollSection">
+                                    
+                                
+                                
+                                </div>
+                                
+                            </div>
+                        </div>
+                    
+                    
+                    
+                    </div>
+         
+                </div>
+            </div>
+        </div>
+
+        <!--Results should show upcomign election, polling address and candidates. It works in console log but there is a bug that its not appending without throwing an error-->
+
+        <div class="row" id="lowerRow">
+            <div class="col-lg-12" id="candidates">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Candidates</h3>
+                    </div>
+                    <div class="panel-body" >
+
+                        <div class="tile is-ancestor">
+                            <div class="tile is-12 is-vertical is-parent">
+                                <div class="tile is-child box"id="candidateSection">
+                                    
+                                
+                                
+                                </div>
+                                
+                            </div>
+                        </div>
+                    
+                    
+                    
+                    </div>
+         
+                </div>
+            </div>
+    
+            
         </div>
 
 
