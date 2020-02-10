@@ -140,39 +140,34 @@ function pollingQuery (queryURLVoterInfo){
         console.log(response.election.electionDay);
         console.log(response.pollingLocations[p].address.locationName);
 
-        }
+    }
 
-        //add contestants when appending works- for now only console log test
-        for (var c=0; c<response.contests.length; c++){
-            var candidateSection=$("<div>");
-            candidateSection.addClass("well");
-            candidateSection.attr('id', 'candWell-'+c );
-            $("#candidateSection").append(candidateSection);
-    
-            //attach the content to well
-            $("#candWell-"+c).append("<h3>Ballot Placement: "+response.contests[c].ballotPlacement+ "</h3>");
-            $("#candWell-"+c).append("<h3>Office : "+response.contests[c].office + "</h3>");
-            $("#candWell-"+c).append("<h3>Candidate: "+response.contests[c].candidates[0].name+ "</h3>");
-            $("#candWell-"+c).append("<h3>Party: "+response.contests[c].candidates[0].party+ "</h3><hr>");
-            
+    //add contestants when appending works- for now only console log test
+    for (var c=0; c<response.contests.length; c++){
+        var candidateSection=$("<div>");
+        candidateSection.addClass("well");
+        candidateSection.attr('id', 'candWell-'+c );
+        $("#candidateSection").append(candidateSection);
 
-            // if(response.contests[c].candidates[0].party==="GREEN"){
-            //     $(".well").css("background-color", "#2ecc40");
-            // } else if (response.contests[c].candidates[0].party==="LIBERTARIAN"){
-            //     $(".well").css("background-color", "#ffdc00");
-            // }else if (response.contests[c].candidates[0].party==="DEMOCRATIC"){
-            //     $(".well").css("background-color", "#7FDBFF");
-            // } else if(response.contests[c].candidates[0].party==="REPUBLICAN"){
-            //     $(".well").css("background-color", "#FF4136");
-            // }  else {
-            //     $(".well").css("background-color", "none");
-            // }
-        }
+        //attach the content to well
+        $("#candWell-"+c).append("<h3>Ballot Placement: "+response.contests[c].ballotPlacement+ "</h3>");
+        $("#candWell-"+c).append("<h3>Office : "+response.contests[c].office + "</h3>");
+        $("#candWell-"+c).append("<h3>Candidate: "+response.contests[c].candidates[0].name+ "</h3>");
+        $("#candWell-"+c).append("<h3>Party: "+response.contests[c].candidates[0].party+ "</h3><hr>");
+        
 
-       
-        console.log(response.contests.length);
-        console.log(response.contests[0].candidates[0]);
-  
+        // if(response.contests[c].candidates[0].party==="GREEN"){
+        //     $(".well").css("background-color", "#2ecc40");
+        // } else if (response.contests[c].candidates[0].party==="LIBERTARIAN"){
+        //     $(".well").css("background-color", "#ffdc00");
+        // }else if (response.contests[c].candidates[0].party==="DEMOCRATIC"){
+        //     $(".well").css("background-color", "#7FDBFF");
+        // } else if(response.contests[c].candidates[0].party==="REPUBLICAN"){
+        //     $(".well").css("background-color", "#FF4136");
+        // }  else {
+        //     $(".well").css("background-color", "none");
+        // }
+    }
 
     });
 }
@@ -230,84 +225,6 @@ function runRepresentativeQuery(queryURLRepresentatives){
     });
     
     }
-
-
-
-
-
-
-
-//a function for all upcoming elections, but we might not need that one
-
-// function runElectionQuery(){
-//     var queryURLElection= queryBaseURL + "elections" +APIkey;
-//     $.ajax({url: queryURLElection,
-//         method: "GET"
-//     }).then(function(response){  
-//         console.log(queryURLElection);
-//         console.log(response);
-
-//         $("#electionSection").empty();
-
-//         for (var i=0; i<response.elections.length; i++){
-    
-//             //put into HTML
-//             var electionSection=$('<div>');
-//             electionSection.addClass("card");
-//             electionSection.attr('data-election', 'elecWell-'+i);
-//             $('#electionSection').append(electionSection);
-    
-    
-//             //Attach content to approp well
-//             $("#elecWell-"+i).append("<h2>Election: "+ response.elections[i].name+"</h2>");
-//             $("#elecWell-"+i).append("<h2>Election Day: "+ response.elections[i].electionDay+"</h2>");
-    
-//         }
-    
-//     });
-    
-// }
-  
-
-//======================================
-//Event Handlers
-//=============================================================================
-//Event handler that goes with that election.html page and the election function that we can probably throw out
-// $("#searchbtn").on("click", function(){
-//     //get address fom input field
-//     //use address to get info about upcoming elections
-
-// function test(){
-
-
-//     $.ajax({url: queryURLElection,
-//         method: "GET"
-//     }).then(function(response){  
-//         console.log(queryURLElection);
-//         console.log(response);
-//     });
-
-//     $("#wellSection").empty();
-
-//         for (var i=0; i<response.elections.length; i++){
-
-//             //put into HTML
-//             var wellSection=$('<div>');
-//             wellSection.addClass("well");
-//             wellSection.attr('id', 'electionWell-'+i);
-//             $('#wellSection').append(wellSection);
-
-//             console.log(response.elections[i].name);
-//             console.log(response.elections[i].electionDay);
-
-//             $("#electionWell-"+i).append("<h5>"+response.elections[i].name+"</h5>");
-//             $("#electionWell-"+i).append("<h5>"+response.elections[i].electionDay+"</h5>");
-
-//         }
-//     }
-// test();
-
-// })
 
 
  });
