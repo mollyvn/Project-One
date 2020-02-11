@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Know Your Vote</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.css" rel ="stylesheet">
+
+
+      
+    </head>
+    
+    
+    <body>
+    <header>
+        <!-- <div class="jumbotron">
+             <h1>Know Your Vote</h1>
+            <p id="jumboText">Local Election Information</p>
+        </div> -->
+        <section class="hero is-dark">
+            <div class="hero-body">
+                <div class="container">
+                <h1 class="title">
+                    Know Your Vote
+                </h1>
+                <h2 class="subtitle">
+                    Local Election Information
+                </h2>
+                </div>
+            </div>
+        </section>
+           
+    </header>
+
+    <body>
+        <div class="columns is-12" id="upperRow">
+
+            <div class="column is-">
+                <article class="message">
+                    <div class="message-header">
+                      <p>Search Parameters</p>
+                    </div>
+                    <div class="message-body">
+                        
+                        <!-- <div class="tile is-ancestor">
+                            <div class="tile is-12 is-vertical is-parent">
+                                <div class="tile is-child box"> -->
+                                    
+                                    <div class="field">
+                                        <label for="search-term">Enter Address:</label>
+                                        <div class="control">
+                                            <input class="input is-warning" type="text" id="address">
+                                        </div>
+                                    <!-- </div>
+                                
+                                </div>
+                                
+                            </div> -->
+                        </div>
+                 
+                                
+                        <button class="button is-dark" type="search" id="pollSearch"><i class="fa fa-search"></i>Submit</button>
+                        <button class="button is-light" id="backBtn"><a href="index.html">Go Back</a></button>
+
+
+                    </div>
+                </article>
+            </div>
+        </div>
+        
+        <div class="columns is-12" id="lowerRow">
+            <div class="column is-4" id="elections">
+                <article class="message">
+                    <div class="message-header">
+                        <p>Upcoming Election</p>
+                    </div>
+                    <div class="message-body">
+                            
+                        <div class="tile is-ancestor">
+                            <div class="tile is-12 is-vertical is-parent"> 
+                              <div class="tile is-child box"id="elecSection">
+                               
+                            </div>
+                        </div>
+                     </div>
+                </article>
+            </div>
+
+            
+            <div class="column is-4" id="polling">
+                <article class="message">
+                    <div class="message-header">
+                        <p>Polling Locations</p>
+                    </div>
+                    <div class="message-body">
+                            
+                        <div class="tile is-ancestor">
+                            <div class="tile is-12 is-vertical is-parent"> 
+                                <div class="tile is-child box"id="pollSection"></div> </div>
+                        </div>
+                     </div>
+                </article>
+            </div>
+
+        <!--Results should show upcomign election, polling address and candidates. It works in console log but there is a bug that its not appending without throwing an error-->
+
+            <div class="column is-4" id="candidates">
+                <article class="message">
+                    <div class="message-header">
+                        <p>Candidates</p>
+                    </div>
+                    <div class="message-body">
+
+                        <div class="tile is-ancestor">
+                            <div class="tile is-12 is-vertical is-parent">
+                                <div class="tile is-child box"id="candidateSection">
+                                </div>  
+                            </div>
+                        </div>
+                     
+                    </div>
+                
+                </article>   
+                                
+                                
+            </div>
+                                
+        </div>
+              
+
+
+
+                        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+        <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI&callback=initMap"
+        type="text/javascript"></script> -->
+        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/build/ol.js"></script>
+
+    </body>
+</html>

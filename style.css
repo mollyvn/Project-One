@@ -32,7 +32,7 @@
       color: #d4d4dc;
       padding: 10px;
       border-radius:5px;
-      margin-bottom: 30px;
+      margin: 10px 10px 30px 10px;
   } 
 
 .title{
@@ -85,4 +85,9 @@ body{
 #electionSection{
     margin:20px;
     padding: 20px;
+}
+
+.massage{
+    box-shadow:2px 2px 3px 4px #393f4d;
+
 }
