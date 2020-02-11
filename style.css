@@ -32,7 +32,7 @@
       color: #d4d4dc;
       padding: 10px;
       border-radius:5px;
-      margin-bottom: 30px;
+      margin: 10px 10px 30px 10px;
   } 
 
 .title{
@@ -40,11 +40,14 @@
 }
 
 h1{
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 
+h3{
+    font-size: 1.2em;
+}
 h4{
-    float:right;
+    text-align: center;
     color:black;
 }
 
@@ -91,7 +94,3 @@ body{
     padding: 20px;
 }
 
-.a {
-    color: #feda6a;
-    outline-color: #393f4d;
-}
