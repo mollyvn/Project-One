@@ -1,8 +1,56 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+
 .jumbotron {
-    background-color: rgb(68, 54, 85);
+    /* background-color: #1d1e22; */
+    background-color: #393f4d;
     text-align: left;
-    color: white;
+    color: #feda6a;
     text-shadow: black;
+    text-align: center;
+    font-size: 2em;
+
+}
+
+.map {
+    height: 400px;
+    width: 100%;
+    border: 1px #feda6a solid;
+    border-radius: 5px;
+  }
+
+  .panel-body{
+      margin: 10px;
+  }
+
+   #upperRow,
+   #lowerRow{
+      box-shadow: 2px 2px 3px 4px #393f4d;
+      color: #d4d4dc;
+      padding: 10px;
+      border-radius:5px;
+      margin-bottom: 30px;
+  } 
+
+.title{
+    font-size: .8em;
+}
+
+h1{
+    font-size: 1.5em;
+}
+
+h4{
+    float:right;
+    color:black;
+}
+
+#jumboText{
+    color: #d4d4dc;
+
 }
 
 .row {
@@ -11,6 +59,7 @@
 
 h2 {
     text-align: center;
+    font-size: 2em;
 }
 
 h3 {
@@ -19,4 +68,18 @@ h3 {
 
 header {
     text-align: center;
+}
+
+body{
+    background-color: #d4d4dc;
+    font-size:1.3em;
+}
+
+.form-control{
+    border-color: #feda6a;
+}
+
+#electionSection{
+    margin:20px;
+    padding: 20px;
 }
