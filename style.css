@@ -7,7 +7,7 @@
 .jumbotron {
     /* background-color: #1d1e22; */
     background-color: #393f4d;
-    text-align: left;
+    /* background-image: ("./assets/abstract-architecture-building-exterior-geometeric-593158.jpg"); */
     color: #feda6a;
     text-shadow: black;
     text-align: center;
@@ -60,10 +60,17 @@ h4{
 h2 {
     text-align: center;
     font-size: 2em;
+    color: #feda6a;
+    background-color: #393f4d;
+    border-radius: 25px; 
 }
 
 h3 {
     text-align: center;
+    font-size: 2em;
+    color: #feda6a;
+    background-color: #393f4d;
+    border-radius: 25px; 
 }
 
 header {
@@ -82,4 +89,9 @@ body{
 #electionSection{
     margin:20px;
     padding: 20px;
+}
+
+.a {
+    color: #feda6a;
+    outline-color: #393f4d;
 }
