@@ -107,7 +107,18 @@ function pollingQuery (queryURLVoterInfo){
     $.ajax({url: queryURLVoterInfo,
         method: "GET"
     }).then(function(response){  
-     
+
+
+     $("#elecSection").empty();
+     $("#pollSection").empty();
+     $("#candidateSection").empty();
+
+     //
+    //  if (response==="error") {
+    //      $("#elecSection").html("<p>No elections in the near future available or error in address.<p>")
+    //  } else
+    
+
     //put into HTML
     var electionSection=$('<div>');
     electionSection.addClass("well");
@@ -150,10 +161,14 @@ function pollingQuery (queryURLVoterInfo){
         $("#candidateSection").append(candidateSection);
 
         //attach the content to well
-        $("#candWell-"+c).append("<h3>Ballot Placement: "+response.contests[c].ballotPlacement+ "</h3>");
-        $("#candWell-"+c).append("<h3>Office : "+response.contests[c].office + "</h3>");
-        $("#candWell-"+c).append("<h3>Candidate: "+response.contests[c].candidates[0].name+ "</h3>");
-        $("#candWell-"+c).append("<h3>Party: "+response.contests[c].candidates[0].party+ "</h3><hr>");
+        $("#candWell-"+c).append("<h3 style='font-weight:bold;'>Ballot Placement: "+response.contests[c].ballotPlacement+ "</h3>");
+        $("#candWell-"+c).append("<h3 style='font-weight:bold;'>Ballot Title/ Office : "+response.contests[c].office + "</h3> <hr class='my-4'>");
+        for (var a=0; a<response.contests[c].candidates.length; a++){
+            console.log(response.contests[c].candidates.length);
+            $("#candWell-"+c).append("<h4>Candidate: "+response.contests[c].candidates[a].name+ "</h4>");
+            $("#candWell-"+c).append("<h4>Party: "+response.contests[c].candidates[a].party+ "</h4><hr>");
+        }
+        
         
 
         // if(response.contests[c].candidates[0].party==="GREEN"){
