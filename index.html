@@ -21,6 +21,7 @@
             <h1>Know Your Vote</h1>
             <p id="jumboText">Election Information</p>
         </div>
+<<<<<<< HEAD
         <div class="row">
             <div class="mx-auto">
                 <h2>About</h2>
@@ -34,6 +35,28 @@
                 <br>
                 Knowing who these representatives are and informing yourself about elections before voting is the most effective way to change how our government works.
             </p>
+=======
+
+        <div class= "container" id="about">
+            <div class="row">
+                <div class="col-lg-12 justify-content-center">
+                    <h2>About</h2>
+                    <br>
+                    <p>
+                        There are many U.S. elections throughout the year, and both election information and political geography can shift with time. Click here to see upcoming elections in your area and get information about the candidates.
+                        <br>
+                        <!--btn connects with election page-->
+                        <button class="button is-rounded" type="search" id="election"><a href ="polling.html">Election Info</a></button>
+                        <br>
+                        This is an application designed to look up who a user’s elected representatives are locally and across the United States. Based on the user’s address, the application can find all the local, county, state, and federal official who represent the user in government. Click here to get information about your representatives
+                        <br>
+                        <!--button connects with search.html-->
+                        <button class="button is-rounded" type="search" id="representative"><a href ="representatives.html">Your Representatives</a></button>
+                        <br>
+                        Knowing who these representatives are and informing yourself about elections before voting is the most effective way to change how our government works.
+                    </p>
+                </div>
+>>>>>>> 637027f6b8d93d0f330a71512fa711017ca5975a
             </div>
         </div>
     </div>
@@ -47,7 +70,9 @@
                     <hr>
 
                 <h2>Enter your Address to See Your Polling Place Location</h2>
+                <br>
                 <input type="text" class="form-control" type="search" aria-label="Search">
+                <br>
                 <button class="button is-rounded" type="search" id="search"><i class="fa fa-search"></i>Search</button>
 
                 <hr>
@@ -59,6 +84,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2>Polling Place for your Address</h2>
+                    <br>
                     <div class="map" id="map"></div>
                 </div>
             </div>
