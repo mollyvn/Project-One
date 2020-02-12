@@ -36,6 +36,7 @@ h1.jumboText{
 
   .panel-body{
       margin: 10px;
+      padding: 10px;
   }
 
   .panel-heading{
@@ -53,6 +54,32 @@ h1.jumboText{
       border-radius:5px;
       margin: 10px 10px 30px 10px;
   } 
+
+
+#electionBtn,
+#representBtn{
+    margin:15px;
+    background-color: #393f4d;
+    color: #feda6a;
+    border-color: #feda6a;
+    border-radius: 20px;
+    
+}  
+
+#electionBtn:hover,
+#representBtn:hover{
+    background-color: #feda6a;
+    color: #393f4d;
+}
+
+#panelHead{
+    background-color: #393f4d;
+    color: #feda6a;
+}
+
+
+
+
 
 .button{
     background-color: #393f4d;
@@ -107,7 +134,7 @@ header {
 }
 
 body{
-    background-color: #d4d4dc;
+    background-color: whitesmoke;
     font-size:1.3em;
 
 }
@@ -165,5 +192,10 @@ body{
 
 .well{
     margin: 10px;
+}
+
+p{
+    line-height: 1.8em;
+    font-size:1.2em;
 }
 

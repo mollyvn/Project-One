@@ -22,56 +22,94 @@
             <p class="jumboText">Election Information</p>
         </div>
 
-        <div class= "container" id="about">
+        <div class="container" id="about">
             <div class="row">
-                <div class="col-lg-12 justify-content-center">
-                    <h2>About</h2>
-                    <p>
-                        There are many U.S. elections throughout the year, and both election information and political geography can shift with time. Click here to see upcoming elections in your area and get information about the candidates.
-                        <br>
-                        <!--btn connects with election page-->
-                        <button class="button is-rounded" type="search" id="election"><a href ="polling.html">Election Info</a></button>
-                        <br>
-                        This is an application designed to look up who a user’s elected representatives are locally and across the United States. Based on the user’s address, the application can find all the local, county, state, and federal official who represent the user in government. Click here to get information about your representatives
-                        <br>
-                        <!--button connects with search.html-->
-                        <button class="button is-rounded" type="search" id="representative"><a href ="representatives.html">Your Representatives</a></button>
-                        <br>
-                        Knowing who these representatives are and informing yourself about elections before voting is the most effective way to change how our government works.
-                    </p>
+                <div class="col-lg-12">
+                    <div class="panel panel-primary justify-content-center">
+                        <div class="panel-heading" id="panelHead">
+                            <h2 class="panel-title">About</h2>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                This is an application designed to look up who a user’s elected representatives are locally and across the United States. Based on the user’s address, the application can find all the local, county, state, and federal official who represent the user in government. Click here to get information about your representatives
+                                <br>
+                                <!--button connects with search.html-->
+                                <a href="representatives.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"id="representBtn">Your Representatives</a>
+                                <br>
+                                There are many U.S. elections throughout the year, and both election information and political geography can shift with time. To see upcoming elections in your area and get information about the your candidates and polling locations and hours, enter your address below and click "Election Info".
+                                <br>
+                                Knowing who your representatives are and informing yourself about elections before voting is the most effective way to change how our government works.
+                                 </p>
+                            </div>
+                    </div>
                 </div>
             </div>
         </div>
+
 
         <div class="container" id="address">
             <div class="row">
                 <div class="col-lg-12">
-                    <hr>
-
-                <h2>Enter your Address to See Your Polling Place Location</h2>
-                <input type="text" class="form-control" type="search" aria-label="Search">
-                <button class="button is-rounded" type="search" id="search"><i class="fa fa-search"></i>Search</button>
-
                 <hr>
-                </div>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading"id="panelHead">
+                        <h2 class="panel-title">Add your Address</h2>
+                    </div>
+                        <div class="panel-body">
+                            <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" class="form-control">
+                            <div id="address">
+                                <div class="row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Street address</label>
+                                    <input class="form-control" id="street_number" disabled="true">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label">Route</label>
+                                    <input class="form-control" id="route" disabled="true">
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-6">
+                                    <label class="control-label">City</label>
+                                    <input class="form-control field" id="locality" disabled="true">
+                                </div>
+                                <div class="col-md-6"> 
+                                    <label class="control-label">State</label>
+                                    <input class="form-control" id="administrative_area_level_1" disabled="true">
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-6">
+                                    <label class="control-label">Zip code</label>
+                                    <input class="form-control" id="postal_code" disabled="true">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label">Country</label>
+                                    <input class="form-control" id="country" disabled="true">
+                                </div>
+                                <br>
+                                <!--btn connects with election page-->
+                                <a href="polling.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"id="electionBtn">Election Info</a>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
             </div>
         </div>
+    </div>
 
-        <!-- <div class="container" id="mapCon">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Polling Place for your Address</h2>
-                    <div class="map" id="map"></div>
-                </div>
-            </div>
-        </div> -->
+        
     
 
 
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        <script src="auto-complete.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI&libraries=places&callback=initAutocomplete" async defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
