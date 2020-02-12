@@ -64,17 +64,17 @@ h4{
 h2 {
     text-align: center;
     font-size: 2em;
-    color: #feda6a;
-    background-color: #393f4d;
-    border-radius: 25px; 
+    /* color: #feda6a; */
+    /* background-color: #393f4d; */
+    /* border-radius: 25px;  */
 }
 
 h3 {
     text-align: center;
     font-size: 2em;
-    color: #feda6a;
+    /* color: #feda6a;
     background-color: #393f4d;
-    border-radius: 25px; 
+    border-radius: 25px;  */
 }
 
 header {
