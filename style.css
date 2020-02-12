@@ -28,8 +28,7 @@
 
    #upperRow,
    #lowerRow,
-   #lowestRow,
-   {
+   #lowestRow{
       box-shadow: 2px 2px 3px 4px #393f4d;
       color: #d4d4dc;
       padding: 10px;
