@@ -32,6 +32,7 @@ h1.jumboText{
 
   .panel{
       border-color:  #393f4d;
+      box-shadow: 2px 2px 3px 3px #393f4d;
   }
 
   .panel-body{
@@ -59,7 +60,9 @@ h1.jumboText{
 #electionBtn,
 #representBtn,
 #searchRepBtn,
-#homeBtn{
+#earlySearchBtn,
+#pollSearchBtn,
+#candSearchBtn{
     margin:15px;
     background-color: #393f4d;
     color: #feda6a;
@@ -67,7 +70,20 @@ h1.jumboText{
     border-radius: 20px;
     
 }  
+#backBtn,
+#homeBtn{
+    float:right;
+    margin:15px;
+    background-color: #393f4d;
+    color: #feda6a;
+    border-color: #feda6a;
+    border-radius: 20px;
+}
 
+#pollSearchBtn:hover,
+#backBtn:hover,
+#earlySearchBtn:hover,
+#candSearchBtn:hover,
 #electionBtn:hover,
 #representBtn:hover,
 #searchRepBtn:hover,
@@ -157,8 +173,8 @@ body{
     padding: 16px;
     border: 1px solid gray;
     border-radius: 5px;
-    margin: 10px;
-    width: 30%;
+    margin: 22px;
+    width: 29%;
     background-color: lightgray;
     
 }
@@ -170,9 +186,12 @@ body{
 #wellSection{
     flex-wrap:wrap;
     display:flex;
-    text-align:center;
+}
 
-
+#earlyVoteSection{
+    flex-wrap:wrap;
+    display:flex;
+    margin: 15px;
 }
 
 .candidate-container{
