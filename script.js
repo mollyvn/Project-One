@@ -167,22 +167,22 @@ function pollingQuery (queryURLVoterInfo){
             console.log(response.contests[c].candidates.length);
             $("#candWell-"+c).append("<h4>Candidate: "+response.contests[c].candidates[a].name+ "</h4>");
             $("#candWell-"+c).append("<h4>Party: "+response.contests[c].candidates[a].party+ "</h4><hr>");
+        
+            if(response.contests[c].candidates[0].party==="GREEN"){
+                $("#candWell-"+c).css("background-color", "#2ecc40");
+            } else if (response.contests[c].candidates[0].party==="LIBERTARIAN"){
+                $("#candWell-"+c).css("background-color", "#ffdc00");
+            }else if (response.contests[c].candidates[0].party==="DEMOCRATIC"){
+                $("#candWell-"+c).css("background-color", "#7FDBFF");
+            } else if(response.contests[c].candidates[0].party==="REPUBLICAN"){
+                $("#candWell-"+c).css("background-color", "#FF4136");
+            }  else {
+                $("#candWell-"+c).css("background-color", "none");
+            }
         }
         
-        
-
-        // if(response.contests[c].candidates[0].party==="GREEN"){
-        //     $(".well").css("background-color", "#2ecc40");
-        // } else if (response.contests[c].candidates[0].party==="LIBERTARIAN"){
-        //     $(".well").css("background-color", "#ffdc00");
-        // }else if (response.contests[c].candidates[0].party==="DEMOCRATIC"){
-        //     $(".well").css("background-color", "#7FDBFF");
-        // } else if(response.contests[c].candidates[0].party==="REPUBLICAN"){
-        //     $(".well").css("background-color", "#FF4136");
-        // }  else {
-        //     $(".well").css("background-color", "none");
-        // }
-    }
+        }
+    
 
     });
 }
@@ -230,7 +230,7 @@ function runRepresentativeQuery(queryURLRepresentatives){
             $("#repWell-"+i).append("<h4>Name: "+response.officials[i].name+"</h4>");
             $("#repWell-"+i).append("<h4>Party: "+response.officials[i].party+"</h4>");
     
-            // $("#repWell-"+i).append("<a href=" + response.officials[i].urls[0]+">"+response.officials[i].urls[0] +"</a>");
+            $("#repWell-"+i).append("<a href=" + response.officials[i].urls[0]+">"+response.officials[i].urls[0] +"</a>");
             $("#repWell-"+i).append("<br></div></div>");
     
         }
