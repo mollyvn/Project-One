@@ -7,12 +7,20 @@
 .jumbotron {
     /* background-color: #1d1e22; */
     background-color: #393f4d;
-    /* background-image: ("./assets/abstract-architecture-building-exterior-geometeric-593158.jpg"); */
     color: #feda6a;
     text-shadow: black;
     text-align: center;
     font-size: 2em;
+    /* background-image: url("./assets/abstract-architecture-building-exterior-geometric-593158.jpg"); */
 
+
+}
+h1.jumboText{
+    color: #d4d4dc;
+
+}
+.jumboText{
+    font-size: 1.5em;
 }
 
 .map {
@@ -22,8 +30,17 @@
     border-radius: 5px;
   }
 
+  .panel{
+      border-color:  #393f4d;
+  }
+
   .panel-body{
       margin: 10px;
+  }
+
+  .panel-heading{
+    background-color: #393f4d;
+    color: #feda6a;
   }
 
    #upperRow,
@@ -31,10 +48,17 @@
    #lowestRow{
       box-shadow: 2px 2px 3px 4px #393f4d;
       color: #d4d4dc;
+      background-color: white;
       padding: 10px;
       border-radius:5px;
       margin: 10px 10px 30px 10px;
   } 
+
+.button{
+    background-color: #393f4d;
+    color: #feda6a;
+    margin: 5px;
+}
 
 .title{
     font-size: .8em;
@@ -46,6 +70,7 @@ h1{
 
 h3{
     font-size: 1.2em;
+    color: #d4d4dc;
 }
 h4{
     text-align: center;
@@ -84,6 +109,7 @@ header {
 body{
     background-color: #d4d4dc;
     font-size:1.3em;
+
 }
 
 .form-control{
@@ -93,6 +119,27 @@ body{
 #electionSection{
     margin:20px;
     padding: 20px;
+}
+
+.card{
+    text-align: center;
+    padding: 16px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 10px;
+    width: 30%;
+    
+}
+
+.card.img{
+    text-align: center;
+}
+
+#wellSection{
+    flex-wrap:wrap;
+    display:flex;
+
+
 }
 
 .candidate-container{
@@ -111,6 +158,10 @@ body{
 }
 
 
+.tile.is-child{
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px lightgray;
+}
 
 .well{
     margin: 10px;

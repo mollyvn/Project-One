@@ -141,12 +141,12 @@ function pollingQuery (queryURLVoterInfo){
         $("#pollSection").append(locationSection);
 
         //attach the content to well
-        $("#pollWell-"+p).append("<h3>Location : <br>"+response.pollingLocations[p].address.locationName + 
+        $("#pollWell-"+p).append("<h2>Location : <br>"+response.pollingLocations[p].address.locationName + 
             "<br>"+ response.pollingLocations[p].address.line1 + ", " 
             + response.pollingLocations[p].address.city + ", "
             + response.pollingLocations[p].address.state + ", "
-            + response.pollingLocations[p].address.zip+"</h3><br>");
-        $("#pollWell-"+p).append("<h3>Polling Hours: <br>"+response.pollingLocations[p].pollingHours+"</h3>");
+            + response.pollingLocations[p].address.zip+"</h2><br>");
+        $("#pollWell-"+p).append("<h2>Polling Hours: <br>"+response.pollingLocations[p].pollingHours+"</h2>");
         
         //console log bc some appending issue, but data shows correctly in console
         console.log(response.election.name);
@@ -164,8 +164,8 @@ function pollingQuery (queryURLVoterInfo){
         $("#candidateSection").append(candidateSection);
 
         //attach the content to well
-        $("#candWell-"+c).append("<h3 style='font-weight:bold;'>Ballot Placement: "+response.contests[c].ballotPlacement+ "</h3>");
-        $("#candWell-"+c).append("<h3 style='font-weight:bold;'>Ballot Title/ Office : "+response.contests[c].office + "</h3> <hr class='my-4'>");
+        $("#candWell-"+c).append("<h2 style='font-weight:bold;'>Ballot Placement: "+response.contests[c].ballotPlacement+ "</h2>");
+        $("#candWell-"+c).append("<h2 style='font-weight:bold;'>Ballot Title/ Office : "+response.contests[c].office + "</h2> <hr class='my-4'>");
         for (var a=0; a<response.contests[c].candidates.length; a++){
             var candidateCard = $("<div class='candidate-card'>");
             console.log(response.contests[c].candidates.length);
@@ -181,27 +181,27 @@ function pollingQuery (queryURLVoterInfo){
         
             
             if(green){
-                $(candidateCard).css("background-color","#2ecc40");
+                $(candidateCard).css("background-color","#e3eaa7");
 
-                $("#candWell-"+c).css("border", "2px solid #2ecc40");
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px #e3eaa7");
                 $("#candWell-"+c).css("border-radius", "5px");
             } else if (liberatarian){
-                $(candidateCard).css("background-color","#ffdc00");
+                $(candidateCard).css("background-color","#ffef96");
 
-                $("#candWell-"+c).css("border", "2px solid #ffdc00");
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px #ffef96");
                 $("#candWell-"+c).css("border-radius", "5px");
             }else if (democratic){
-                $(candidateCard).css("background-color","#7FDBFF");
+                $(candidateCard).css("background-color","#deeaee");
                 
-                $("#candWell-"+c).css("border", "2px solid #7FDBFF");
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px #deeaee");
                 $("#candWell-"+c).css("border-radius", "5px");
             } else if(republican){
-                $(candidateCard).css("background-color","#FF4136");
+                $(candidateCard).css("background-color","#eca1a6");
 
-                $("#candWell-"+c).css("border", "2px solid #FF4136");
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px #eca1a6");
                 $("#candWell-"+c).css("border-radius", "5px");
             }  else {
-                $("#candWell-"+c).css("border", "2px solid gray");
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px gray");
             }
         }
         
