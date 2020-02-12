@@ -204,15 +204,16 @@ function runRepresentativeQuery(queryURLRepresentatives){
     
             //put into HTML
             var wellSection=$('<div>');
+            var photoUrl;
             wellSection.addClass("card");
             wellSection.attr('id', 'repWell-'+i);
             $('#wellSection').append(wellSection);
     
-            if(response.officials[i].photoUrl=== "null" || response.officials[i].photoUrl=== "undefined" ){
-                console.log(response.officials[i].name);
-                $("#repWell-"+i).append("<img src='http://placehold.it/128x128'>");
+            // if(!response.officials[i].photoUrl){
+            //     console.log(response.officials[i].name);
+            //     $("#repWell-"+i).append("<img src='http://placehold.it/128x128'>");
     
-            }
+            // }
 
             //the urls throw errors bc some don't have any(I think), so I commented it out for now
     
@@ -221,9 +222,10 @@ function runRepresentativeQuery(queryURLRepresentatives){
             //     $("#repWell-"+i).append("<h4>No URL available</h4>");
     
             // }
-    
+            
+            photoUrl = response.officials[i].photoUrl ? response.officials[i].photoUrl : 'http://placehold.it/128x128';
             //Attach content to approp well
-            $("#repWell-"+i).append("<div class='card-image'><figure class='image is-128x128'><img src=" +response.officials[i].photoUrl+"></figure></div>");
+            $("#repWell-"+i).append("<div class='card-image'><figure class='image is-128x128'><img src=" + photoUrl + "></figure></div>");
             $("#repWell-"+i).append("<div class='card-content'><div class='content>");
             $("#repWell-"+i).append("<h4>Office: "+response.offices[i].name+"</h4>");
     
