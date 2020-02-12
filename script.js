@@ -43,7 +43,7 @@ $(document).ready(function() {
     //Event Listeners
     //=============================================================================
     //representatives
-      $("#search").on("click", function(e){
+      $("#searchRepBtn").on("click", function(e){
           e.preventDefault();
           console.log("search btn clicked");
         var enteredAddress=encodeURI($("#address").val().trim());
@@ -237,8 +237,8 @@ function runRepresentativeQuery(queryURLRepresentatives){
 
     
             //Attach content to approp well
-            $("#repWell-"+i).append("<div class='card-image'><figure class='image is-128x128'><img src=" +imgUrl+"></figure></div>");
-            $("#repWell-"+i).append("<div class='card-content'><div class='content>");
+            $("#repWell-"+i).append("<div class='card-image mx-auto'><figure class='image is-128x128'><img src=" +imgUrl+"></figure></div>");
+            $("#repWell-"+i).append("<div class='card-content mx-auto'><div class='content>");
             $("#repWell-"+i).append("<h4>Office: "+response.offices[i].name+"</h4>");
     
             $("#repWell-"+i).append("<h4>Name: "+response.officials[i].name+"</h4>");

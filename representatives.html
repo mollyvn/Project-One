@@ -19,9 +19,9 @@
     </head>
     <body>
     <header>
-        <div class="jumbotron">
-            <h1>Know Your Vote</h1>
-            <p id="jumboText">Your Representives</p>
+        <div class="jumbotron mx-auto">
+            <h1 class= "jumboText">Know Your Vote</h1>
+            <p class="jumboText">Election Information</p>
         </div>
     </header>
 
@@ -29,8 +29,8 @@
         <div class="row" id="upperRow">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Search Parameters</h3>
+                    <div class="panel-heading" id="panelHead">
+                        <h2 class="panel-title">Search Parameters</h2>
                     </div>
                     <div class="panel-body"></div>
                     <form role="form">
@@ -40,10 +40,9 @@
                           <div class="tile is-child box">
                              
                             <div class="form-group ">
-                                <label for="search-term">Enter Address:</label>
+                                <label for="search-term">Entered Address:</label>
+                                <!--retrieve entered address from index page from local storage-->
                                 <input type="text" class="form-control" id="address">
-                                <!-- <button class="button is-rounded" type="submit" id="submitAddress"><i class="fa fa-search" aria-hidden="true"></i>Submit</button> -->
-
                             </div>
                         </div>
 
@@ -54,11 +53,12 @@
                                 <label class="mr-sm-2" for="sel1">Levels:</label>
                                 <select class="form-control" id="levels">
                                     <option selected>Choose...</option>
-                                    <option value="administrativeArea1">administrative Area 1</option>
-                                    <option value="administrativeArea12">administrative Area 2</option>
-                                    <option value="locality">Locality</option>
-                                    <option value="regional">Regional</option>
+                                    <!-- <option value="international">International</option> -->
                                     <option value="country">Country</option>
+                                    <option value="administrativeArea1">Top-Level Subdivision, e.g. US states</option>
+                                    <option value="locality">City or Municipal Governments</option>
+                                    <option value="administrativeArea12">Second-Level Subdivision, e.g. US counties</option>
+                                    <option value="regional">Regional (usually only in large cities)</option>
                                 
                                 </select>
                             </div>
@@ -88,8 +88,9 @@
                     </div>
                     
 
-                        <button class="button is-rounded" type="search" id="search"><i class="fa fa-search"></i>Submit</button>
-                        <button class="button is-rounded" id="gobackHome"><a href="index.html">Go Back</a></button>
+                        <button class="btn btn-primary btn-lg" type="search" id="searchRepBtn">Submit</button>
+                        <button class="btn btn-primary btn-lg" type="search" id="homeBtn"><a href="index.html">Go Back</a></button>
+                        <!-- <button class="btn btn-primary btn-lg" id="gobackHome"><a href="index.html">Go Back</a></button> -->
                     </form>
 
                 
@@ -101,8 +102,8 @@
 
             <div class="col-lg-12" id="search-results">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Search Results</h3>
+                    <div class="panel-heading" id="panelHead">
+                        <h2 class="panel-title">Search Results</h2>
                     </div>
                     <div class="panel-body" id="wellSection">
                     </div>

@@ -57,7 +57,9 @@ h1.jumboText{
 
 
 #electionBtn,
-#representBtn{
+#representBtn,
+#searchRepBtn,
+#homeBtn{
     margin:15px;
     background-color: #393f4d;
     color: #feda6a;
@@ -67,7 +69,9 @@ h1.jumboText{
 }  
 
 #electionBtn:hover,
-#representBtn:hover{
+#representBtn:hover,
+#searchRepBtn:hover,
+#homeBtn:hover{
     background-color: #feda6a;
     color: #393f4d;
 }
@@ -155,6 +159,7 @@ body{
     border-radius: 5px;
     margin: 10px;
     width: 30%;
+    background-color: lightgray;
     
 }
 
@@ -165,6 +170,7 @@ body{
 #wellSection{
     flex-wrap:wrap;
     display:flex;
+    text-align:center;
 
 
 }
