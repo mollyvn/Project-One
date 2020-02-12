@@ -208,15 +208,12 @@ function runRepresentativeQuery(queryURLRepresentatives){
             wellSection.addClass("card");
             wellSection.attr('id', 'repWell-'+i);
             $('#wellSection').append(wellSection);
-<<<<<<< HEAD
     
             // if(!response.officials[i].photoUrl){
             //     console.log(response.officials[i].name);
             //     $("#repWell-"+i).append("<img src='http://placehold.it/128x128'>");
     
             // }
-=======
->>>>>>> 637027f6b8d93d0f330a71512fa711017ca5975a
 
             //the urls throw errors bc some don't have any(I think), so I commented it out for now
     
@@ -225,18 +222,10 @@ function runRepresentativeQuery(queryURLRepresentatives){
             //     $("#repWell-"+i).append("<h4>No URL available</h4>");
     
             // }
-<<<<<<< HEAD
             
             photoUrl = response.officials[i].photoUrl ? response.officials[i].photoUrl : 'http://placehold.it/128x128';
             //Attach content to approp well
             $("#repWell-"+i).append("<div class='card-image'><figure class='image is-128x128'><img src=" + photoUrl + "></figure></div>");
-=======
-    
-            var imgUrl = response.officials[i].photoUrl || "http://placehold.it/128x128";
-
-            //Attach content to approp well
-            $("#repWell-"+i).append("<div class='card-image'><figure class='image is-128x128'><img src=" + imgUrl +"></figure></div>");
->>>>>>> 637027f6b8d93d0f330a71512fa711017ca5975a
             $("#repWell-"+i).append("<div class='card-content'><div class='content>");
             $("#repWell-"+i).append("<h4>Office: "+response.offices[i].name+"</h4>");
     
