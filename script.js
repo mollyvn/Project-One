@@ -43,7 +43,7 @@ $(document).ready(function() {
     //Event Listeners
     //=============================================================================
     //representatives
-      $("#search").on("click", function(e){
+      $("#searchRepBtn").on("click", function(e){
           e.preventDefault();
           console.log("search btn clicked");
         var enteredAddress=encodeURI($("#address").val().trim());
@@ -93,6 +93,7 @@ $(document).ready(function() {
       $("#wellSection").empty();
 
       pollingQuery(NewQueryURLVoterInfo);
+      console.log("POLLING DATS", NewQueryURLVoterInfo)
      
       return false;
     })
@@ -107,6 +108,7 @@ function pollingQuery (queryURLVoterInfo){
     $.ajax({url: queryURLVoterInfo,
         method: "GET"
     }).then(function(response){  
+        
 
 
      $("#elecSection").empty();
@@ -139,12 +141,12 @@ function pollingQuery (queryURLVoterInfo){
         $("#pollSection").append(locationSection);
 
         //attach the content to well
-        $("#pollWell-"+p).append("<h3>Location : <br>"+response.pollingLocations[p].address.locationName + 
+        $("#pollWell-"+p).append("<h2>Location : <br>"+response.pollingLocations[p].address.locationName + 
             "<br>"+ response.pollingLocations[p].address.line1 + ", " 
             + response.pollingLocations[p].address.city + ", "
             + response.pollingLocations[p].address.state + ", "
-            + response.pollingLocations[p].address.zip+"</h3><br>");
-        $("#pollWell-"+p).append("<h3>Polling Hours: <br>"+response.pollingLocations[p].pollingHours+"</h3>");
+            + response.pollingLocations[p].address.zip+"</h2><br>");
+        $("#pollWell-"+p).append("<h2>Polling Hours: <br>"+response.pollingLocations[p].pollingHours+"</h2>");
         
         //console log bc some appending issue, but data shows correctly in console
         console.log(response.election.name);
@@ -156,33 +158,55 @@ function pollingQuery (queryURLVoterInfo){
     //add contestants when appending works- for now only console log test
     for (var c=0; c<response.contests.length; c++){
         var candidateSection=$("<div>");
+        var candidateContainer = $("<div class='candidate-container'>");
         candidateSection.addClass("well");
         candidateSection.attr('id', 'candWell-'+c );
         $("#candidateSection").append(candidateSection);
 
         //attach the content to well
-        $("#candWell-"+c).append("<h3 style='font-weight:bold;'>Ballot Placement: "+response.contests[c].ballotPlacement+ "</h3>");
-        $("#candWell-"+c).append("<h3 style='font-weight:bold;'>Ballot Title/ Office : "+response.contests[c].office + "</h3> <hr class='my-4'>");
+        $("#candWell-"+c).append("<h2 style='font-weight:bold;'>Ballot Placement: "+response.contests[c].ballotPlacement+ "</h2>");
+        $("#candWell-"+c).append("<h2 style='font-weight:bold;'>Ballot Title/ Office : "+response.contests[c].office + "</h2> <hr class='my-4'>");
         for (var a=0; a<response.contests[c].candidates.length; a++){
+            var candidateCard = $("<div class='candidate-card'>");
             console.log(response.contests[c].candidates.length);
-            $("#candWell-"+c).append("<h4>Candidate: "+response.contests[c].candidates[a].name+ "</h4>");
-            $("#candWell-"+c).append("<h4>Party: "+response.contests[c].candidates[a].party+ "</h4><hr>");
+            $(candidateCard).append("<p>Candidate: "+response.contests[c].candidates[a].name+ "</p>");
+            $(candidateCard).append("<p>Party: "+response.contests[c].candidates[a].party+ "</p>");
+            $(candidateContainer).append(candidateCard);
+            $("#candWell-"+c).append(candidateContainer);
+
+            var green =response.contests[c].candidates[0].party==="GREEN";
+            var liberatarian= response.contests[c].candidates[0].party==="LIBERTARIAN";
+            var democratic= response.contests[c].candidates[0].party==="DEMOCRATIC";
+            var republican = response.contests[c].candidates[0].party==="REPUBLICAN";
+        
+            
+            if(green){
+                $(candidateCard).css("background-color","#e3eaa7");
+
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px #e3eaa7");
+                $("#candWell-"+c).css("border-radius", "5px");
+            } else if (liberatarian){
+                $(candidateCard).css("background-color","#ffef96");
+
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px #ffef96");
+                $("#candWell-"+c).css("border-radius", "5px");
+            }else if (democratic){
+                $(candidateCard).css("background-color","#deeaee");
+                
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px #deeaee");
+                $("#candWell-"+c).css("border-radius", "5px");
+            } else if(republican){
+                $(candidateCard).css("background-color","#eca1a6");
+
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px #eca1a6");
+                $("#candWell-"+c).css("border-radius", "5px");
+            }  else {
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px gray");
+            }
         }
         
-        
+        }
 
-        // if(response.contests[c].candidates[0].party==="GREEN"){
-        //     $(".well").css("background-color", "#2ecc40");
-        // } else if (response.contests[c].candidates[0].party==="LIBERTARIAN"){
-        //     $(".well").css("background-color", "#ffdc00");
-        // }else if (response.contests[c].candidates[0].party==="DEMOCRATIC"){
-        //     $(".well").css("background-color", "#7FDBFF");
-        // } else if(response.contests[c].candidates[0].party==="REPUBLICAN"){
-        //     $(".well").css("background-color", "#FF4136");
-        // }  else {
-        //     $(".well").css("background-color", "none");
-        // }
-    }
 
     });
 }
@@ -208,25 +232,19 @@ function runRepresentativeQuery(queryURLRepresentatives){
             wellSection.attr('id', 'repWell-'+i);
             $('#wellSection').append(wellSection);
 
-            //the urls throw errors bc some don't have any(I think), so I commented it out for now
-    
-            // if(response.officials[i].urls[0]=="null" || response.officials[i].urls[0]==="undefined"){
-            //     console.log(response.officials[i].name);
-            //     $("#repWell-"+i).append("<h4>No URL available</h4>");
-    
-            // }
-    
+
             var imgUrl = response.officials[i].photoUrl || "http://placehold.it/128x128";
 
+    
             //Attach content to approp well
-            $("#repWell-"+i).append("<div class='card-image'><figure class='image is-128x128'><img src=" + imgUrl +"></figure></div>");
-            $("#repWell-"+i).append("<div class='card-content'><div class='content>");
+            $("#repWell-"+i).append("<div class='card-image mx-auto'><figure class='image is-128x128'><img src=" +imgUrl+"></figure></div>");
+            $("#repWell-"+i).append("<div class='card-content mx-auto'><div class='content>");
             $("#repWell-"+i).append("<h4>Office: "+response.offices[i].name+"</h4>");
     
             $("#repWell-"+i).append("<h4>Name: "+response.officials[i].name+"</h4>");
             $("#repWell-"+i).append("<h4>Party: "+response.officials[i].party+"</h4>");
     
-            // var offUrl = (response.officials[i].urls && response.officials[i].urls[0]) ? response.officials[i].urls[0] : "no url available";
+            var offUrl = (response.officials[i].urls && response.officials[i].urls[0]) ? response.officials[i].urls[0] : "no url available";
 
             var offUrl;
 
