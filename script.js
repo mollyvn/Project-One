@@ -182,7 +182,7 @@ function pollingQuery (queryURLVoterInfo){
         }
         
         }
-    
+
 
     });
 }
@@ -231,6 +231,17 @@ function runRepresentativeQuery(queryURLRepresentatives){
             $("#repWell-"+i).append("<h4>Party: "+response.officials[i].party+"</h4>");
     
             $("#repWell-"+i).append("<a href=" + response.officials[i].urls[0]+">"+response.officials[i].urls[0] +"</a>");
+            // var offUrl = (response.officials[i].urls && response.officials[i].urls[0]) ? response.officials[i].urls[0] : "no url available";
+
+            var offUrl;
+
+            if(response.officials[i].urls && response.officials[i].urls[0]) {
+                offUrl = "<a href='" + response.officials[i].urls[0] + "'>" + response.officials[i].urls[0] + "</a>";
+            } else {
+                offUrl = "<p>no url available</p>";
+            }
+
+            $("#repWell-"+i).append(offUrl);
             $("#repWell-"+i).append("<br></div></div>");
     
         }
