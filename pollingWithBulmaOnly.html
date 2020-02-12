@@ -43,7 +43,7 @@
     <body>
         <div class="columns is-12" id="upperRow">
 
-            <div class="column is-">
+            <div class="column is-12">
                 <article class="message">
                     <div class="message-header">
                       <p>Search Parameters</p>
@@ -67,8 +67,8 @@
                         </div>
                  
                                 
-                        <button class="button is-dark" type="search" id="pollSearch"><i class="fa fa-search"></i>Submit</button>
-                        <button class="button is-light" id="backBtn"><a href="index.html">Go Back</a></button>
+                        <button class="btn btn-dark" type="search" id="pollSearch"><i class="fa fa-search"></i>Submit</button>
+                        <button class="btn btn-light" id="backBtn"><a href="index.html">Go Back</a></button>
 
 
                     </div>
@@ -77,6 +77,8 @@
         </div>
         
         <div class="columns is-12" id="lowerRow">
+
+
             <div class="column is-4" id="elections">
                 <article class="message">
                     <div class="message-header">
@@ -86,11 +88,11 @@
                             
                         <div class="tile is-ancestor">
                             <div class="tile is-12 is-vertical is-parent"> 
-                              <div class="tile is-child box"id="elecSection">
-                               
+                                <div class="tile is-child box"id="elecSection">
+                                
                             </div>
                         </div>
-                     </div>
+                    </div>
                 </article>
             </div>
 
@@ -109,10 +111,31 @@
                      </div>
                 </article>
             </div>
+        
+
+            <div class="column is-4" id="mapCon">
+                <article class="message">
+                    <div class="message-header">
+                        <p>Map</p>
+                    </div>
+                    <div class="message-body">
+                            
+                        <div class="tile is-ancestor">
+                            <div class="tile is-12 is-vertical is-parent"> 
+                            <div class="tile is-child box">
+                                <div class="map" id="map"></div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
 
         <!--Results should show upcomign election, polling address and candidates. It works in console log but there is a bug that its not appending without throwing an error-->
+        <div class="columns is-12" id="lowestRow">
 
-            <div class="column is-4" id="candidates">
+            <div class="column is-12" id="candidates">
                 <article class="message">
                     <div class="message-header">
                         <p>Candidates</p>
