@@ -93,6 +93,7 @@ $(document).ready(function() {
       $("#wellSection").empty();
 
       pollingQuery(NewQueryURLVoterInfo);
+      console.log("POLLING DATS", NewQueryURLVoterInfo)
      
       return false;
     })
@@ -107,6 +108,7 @@ function pollingQuery (queryURLVoterInfo){
     $.ajax({url: queryURLVoterInfo,
         method: "GET"
     }).then(function(response){  
+        
 
 
      $("#elecSection").empty();
@@ -156,6 +158,7 @@ function pollingQuery (queryURLVoterInfo){
     //add contestants when appending works- for now only console log test
     for (var c=0; c<response.contests.length; c++){
         var candidateSection=$("<div>");
+        var candidateContainer = $("<div class='candidate-container'>");
         candidateSection.addClass("well");
         candidateSection.attr('id', 'candWell-'+c );
         $("#candidateSection").append(candidateSection);
@@ -164,20 +167,41 @@ function pollingQuery (queryURLVoterInfo){
         $("#candWell-"+c).append("<h3 style='font-weight:bold;'>Ballot Placement: "+response.contests[c].ballotPlacement+ "</h3>");
         $("#candWell-"+c).append("<h3 style='font-weight:bold;'>Ballot Title/ Office : "+response.contests[c].office + "</h3> <hr class='my-4'>");
         for (var a=0; a<response.contests[c].candidates.length; a++){
+            var candidateCard = $("<div class='candidate-card'>");
             console.log(response.contests[c].candidates.length);
-            $("#candWell-"+c).append("<h4>Candidate: "+response.contests[c].candidates[a].name+ "</h4>");
-            $("#candWell-"+c).append("<h4>Party: "+response.contests[c].candidates[a].party+ "</h4><hr>");
+            $(candidateCard).append("<p>Candidate: "+response.contests[c].candidates[a].name+ "</p>");
+            $(candidateCard).append("<p>Party: "+response.contests[c].candidates[a].party+ "</p>");
+            $(candidateContainer).append(candidateCard);
+            $("#candWell-"+c).append(candidateContainer);
+
+            var green =response.contests[c].candidates[0].party==="GREEN";
+            var liberatarian= response.contests[c].candidates[0].party==="LIBERTARIAN";
+            var democratic= response.contests[c].candidates[0].party==="DEMOCRATIC";
+            var republican = response.contests[c].candidates[0].party==="REPUBLICAN";
         
-            if(response.contests[c].candidates[0].party==="GREEN"){
-                $("#candWell-"+c).css("background-color", "#2ecc40");
-            } else if (response.contests[c].candidates[0].party==="LIBERTARIAN"){
-                $("#candWell-"+c).css("background-color", "#ffdc00");
-            }else if (response.contests[c].candidates[0].party==="DEMOCRATIC"){
-                $("#candWell-"+c).css("background-color", "#7FDBFF");
-            } else if(response.contests[c].candidates[0].party==="REPUBLICAN"){
-                $("#candWell-"+c).css("background-color", "#FF4136");
+            
+            if(green){
+                $(candidateCard).css("background-color","#2ecc40");
+
+                $("#candWell-"+c).css("border", "2px solid #2ecc40");
+                $("#candWell-"+c).css("border-radius", "5px");
+            } else if (liberatarian){
+                $(candidateCard).css("background-color","#ffdc00");
+
+                $("#candWell-"+c).css("border", "2px solid #ffdc00");
+                $("#candWell-"+c).css("border-radius", "5px");
+            }else if (democratic){
+                $(candidateCard).css("background-color","#7FDBFF");
+                
+                $("#candWell-"+c).css("border", "2px solid #7FDBFF");
+                $("#candWell-"+c).css("border-radius", "5px");
+            } else if(republican){
+                $(candidateCard).css("background-color","#FF4136");
+
+                $("#candWell-"+c).css("border", "2px solid #FF4136");
+                $("#candWell-"+c).css("border-radius", "5px");
             }  else {
-                $("#candWell-"+c).css("background-color", "none");
+                $("#candWell-"+c).css("border", "2px solid gray");
             }
         }
         
