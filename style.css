@@ -47,7 +47,8 @@ h1.jumboText{
 
    #upperRow,
    #lowerRow,
-   #lowestRow{
+   #lowestRow,
+   #secondLowestRow{
       box-shadow: 2px 2px 3px 4px #393f4d;
       color: #d4d4dc;
       background-color: white;
@@ -68,6 +69,7 @@ h1.jumboText{
     color: #feda6a;
     border-color: #feda6a;
     border-radius: 20px;
+    font-size: 15px;
     
 }  
 #backBtn,
@@ -78,6 +80,7 @@ h1.jumboText{
     color: #feda6a;
     border-color: #feda6a;
     border-radius: 20px;
+    font-size: 15px;
 }
 
 #pollSearchBtn:hover,
@@ -136,7 +139,7 @@ h4{
 h2 {
     text-align: center;
     font-size: 2em;
-    /* color: #feda6a; */
+    /* color: #393f4d; */
     /* background-color: #393f4d; */
     /* border-radius: 25px;  */
 }
@@ -154,7 +157,7 @@ header {
 }
 
 body{
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     font-size:1.3em;
 
 }
