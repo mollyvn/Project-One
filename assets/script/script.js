@@ -201,7 +201,7 @@ function pollingQuery (queryURLVoterInfo){
     }
     //somehow this variable needs to be used in Jonathan's map function
     var pollingLocationforMaps =response.pollingLocations[0].address.locationName
-    fillInAddress(pollingLocationforMaps);
+    // fillInAddress();
 
 });
 }
