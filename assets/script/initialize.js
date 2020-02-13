@@ -27,7 +27,9 @@ function initAutocomplete() {
     autocomplete.addListener('place_changed', fillInAddress);
 }
 // Need to link place changed to polling place with on click event of search button!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-function fillInAddress() {
+
+
+function fillInAddress(autocomplete) {
     var place = autocomplete.getPlace();
     if (place.geometry.viewport) {
         map.fitBounds(place.geometry.viewport);
@@ -62,7 +64,7 @@ function fillInAddress() {
     //   }
     // }
 }
-function geolocate() {
+function geolocate(autocomplete) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             var geolocation = {

@@ -24,9 +24,20 @@ h1.jumboText{
 .jumboText{
     font-size: 1.5em;
 }
+#upperRow,
+#lowerRow,
+#lowestRow,
+#secondLowestRow{
+   box-shadow: 2px 2px 3px 4px #393f4d;
+   /* color: #d4d4dc; */
+   background-color: white;
+   padding: 10px;
+   border-radius:5px;
+   margin: 10px 10px 30px 10px;
+} 
 
 #map {
-    height: 400px;
+    height: 300px;
     width: 100%;
     border: 1px #feda6a solid;
     border-radius: 5px;
@@ -47,16 +58,7 @@ h1.jumboText{
     color: #feda6a;
   }
 
-   #upperRow,
-   #lowerRow,
-   #lowestRow{
-      box-shadow: 2px 2px 3px 4px #393f4d;
-      color: #d4d4dc;
-      background-color: white;
-      padding: 10px;
-      border-radius:5px;
-      margin: 10px 10px 30px 10px;
-  } 
+  
 
 
 #electionBtn,
@@ -70,6 +72,7 @@ h1.jumboText{
     color: #feda6a;
     border-color: #feda6a;
     border-radius: 20px;
+    font-size: 15px;
     
 }  
 #backBtn,
@@ -80,6 +83,7 @@ h1.jumboText{
     color: #feda6a;
     border-color: #feda6a;
     border-radius: 20px;
+    font-size: 15px;
 }
 
 #pollSearchBtn:hover,
@@ -97,10 +101,8 @@ h1.jumboText{
 #panelHead{
     background-color: #393f4d;
     color: #feda6a;
+    font-size:1.3em;
 }
-
-
-
 
 
 .button{
@@ -138,7 +140,7 @@ h4{
 h2 {
     text-align: center;
     font-size: 2em;
-    /* color: #feda6a; */
+    /* color: #393f4d; */
     /* background-color: #393f4d; */
     /* border-radius: 25px;  */
 }
@@ -156,7 +158,7 @@ header {
 }
 
 body{
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     font-size:1.3em;
 
 }

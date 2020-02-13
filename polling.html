@@ -3,18 +3,17 @@
     <head>
         <title>Know Your Vote</title>
         <meta charset="UTF-8">
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="./assets/style/style.css" />
         <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.css" rel ="stylesheet">
-
-
       
     </head>
     
@@ -35,9 +34,10 @@
         <div class="row" id="upperRow">
 
             <div class="col-lg-12">
+
                 <div class="panel panel-default">
                     <div class="panel-heading"id="panelHead">
-                        <h2 class="panel-title">Search Parameters</h2>
+                        <h2 class="panel-title">Enter your Address to Retrieve Personalized Information</h2>
                     </div>
                     <div class="panel-body">
 
@@ -45,32 +45,34 @@
                             <div class="tile is-12 is-vertical is-parent">
                                 <div class="tile is-child box">
                                     
-                                <div class="form-group ">
-                                    <label for="search-term">Entered Address:</label>
-                                    <input type="text" class="form-control" id="address">
+                                    <div class="form-group ">
+                                        <!-- <label for="search-term">Enter Address:</label> -->
+                                        <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" class="form-control">
+                                        <br>
+
+                                        <button class="btn btn-dark btn-lg" type="search" id="pollSearchBtn">Polling Location</button>
+                                        <button class="btn btn-dark btn-lg" type="search" id="earlySearchBtn">Early Voting</button>
+                                        <button class="btn btn-dark btn-lg" type="search" id="candSearchBtn">Candidates on Ballot</button>
+
+                                        <a href="index.html" class="btn btn-dark btn-lg" role="button" aria-pressed="true"id="backBtn">Go Back</a>
+                                    
+                                    </div>
                                 </div>
-                                
-                                </div>
-                                
                             </div>
                         </div>
-                                
-                            <button class="btn btn-dark btn-lg" type="search" id="pollSearchBtn">Polling Location</button>
-                            <button class="btn btn-dark btn-lg" type="search" id="earlySearchBtn">Early Voting</button>
-                            <button class="btn btn-dark btn-lg" type="search" id="candSearchBtn">Candidates on Ballot</button>
-
-                            <a href="index.html" class="btn btn-dark btn-lg" role="button" aria-pressed="true"id="backBtn">Go Back</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!--this will later be the first row-->
+
+    <!--Map Row-->
+    <div class="container">
 
         <div class="row" id="lowerRow">
 
-            
-            <div class="col-lg-4" id="elections">
+            <div class="col-lg-3" id="elections">
                 <div class="panel panel-default">
                     <div class="panel-heading"id="panelHead">
                         <h2 class="panel-title">Upcoming Election</h2>
@@ -87,27 +89,27 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-4" id="mapCon">
+            
+            
+            <div class="col-lg-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading" id="panelHead">
-                        <h2 class="panel-title">Location on Map</h2>
-                    </div>
-                    <div class="panel-body" >
+                    <div class="panel-heading"id="panelHead">  
+                        <h2 class="panel-title">Polling Location on Map</h2>
+                    </div>            
+                    <div class="panel-body">
                         <div class="tile is-ancestor">
                             <div class="tile is-12 is-vertical is-parent"> 
-                            <div class="tile is-child box">
-                                <div class="map" id="map"></div>
-                            
-                            </div>
+                                <div class="tile is-child box"> 
+                        
+                                    <div class="map" id="map"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        
-
-            <div class="col-lg-4" id="polling">
+      
+            <div class="col-lg-3" id="polling">
                 <div class="panel panel-default">
                     <div class="panel-heading"id="panelHead">
                         <h2 class="panel-title">Polling Locations</h2>
@@ -116,21 +118,20 @@
 
                         <div class="tile is-ancestor">
                             <div class="tile is-12 is-vertical is-parent">
-                                <div class="tile is-child box"id="pollSection">
+                                <div class="tile is-child box" id="pollSection">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-            
-
-
+        </div>
     </div>
 
+
     <!--eraly vote row-->
+
+    <div class="container">
     <div class="row" id="secondLowestRow">
 
         <div class="col-lg-12" id="earlyVotes">
@@ -140,9 +141,9 @@
                 </div>
                 <div class="panel-body">
 
-                    <div class="tile is-ancestor" id="earlyVoteSection">
+                    <div class="tile is-ancestor" >
                         <div class="tile is-12 is-vertical is-parent" >
-                            <div class="tile is-child box">
+                            <div class="tile is-child box"id="earlyVoteSection">
                             </div>  
                         </div>
                     </div>
@@ -150,10 +151,10 @@
             </div>
         </div>
     </div>
-  
+</div>
 
         <!--Results should show upcomign election, polling address and candidates. It works in console log but there is a bug that its not appending without throwing an error-->
-
+<div class="container">
     <div class="row" id="lowestRow">
         <div class="col-lg-12" id="candidates">
             <div class="panel panel-default">
@@ -172,22 +173,26 @@
             </div>
         </div>
     </div>
+
 </div>
 
 
 
-                        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-        <script src="script.js"></script>
-        <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI&callback=initMap"
-        type="text/javascript"></script> -->
-        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/build/ol.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!-- <script src="auto-complete.js"></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI&libraries=places&callback=initAutocomplete" async defer></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+crossorigin="anonymous"></script>
+<script src="./assets/script/script.js"></script>
+<script src="./assets/script/initialize.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/build/ol.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI&signed_in=true&libraries=places&callback=initialize" async defer></script>
+
 
     </body>
 </html>

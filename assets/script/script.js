@@ -12,32 +12,17 @@ $(document).ready(function() {
     var map;
 
     //default address to test
-    var defaultAddress="209%20W.%20Wilder%20Ave.%20Tampa%20FL"
-    var defaultElectionID= "2000";
-    //buttons
-    var submitBtn =$("#submit");
+    // var defaultAddress="209%20W.%20Wilder%20Ave.%20Tampa%20FL"
+    // var defaultElectionID= "2000";
     
     // URL base representatives
     var queryBaseURL="https://www.googleapis.com/civicinfo/v2/";
-    var queryURLElection= queryBaseURL + "elections" +APIkey;
-    var queryURLVoterInfo= queryBaseURL + "voterinfo" +APIkey + "&address=" +defaultAddress;
+    // var queryURLElection= queryBaseURL + "elections" +APIkey;
+    // var queryURLVoterInfo= queryBaseURL + "voterinfo" +APIkey + "&address=" +defaultAddress;
     // var queryURLDivisions= queryBaseURL + "division" +APIkey + "&address=" +defaultAddress;
-    var queryURLRepresentatives= queryBaseURL +"representatives" + APIkey+ "&address=" +defaultAddress;
-    var queryURLSearchPage = queryBaseURL +"representatives" + APIkey+ "&address="
+    // var queryURLRepresentatives= queryBaseURL +"representatives" + APIkey+ "&address=" +defaultAddress;
+    // var queryURLSearchPage = queryBaseURL +"representatives" + APIkey+ "&address="
 
-    //Map
-    // var map = new ol.Map({
-    //     target: 'map',
-    //     layers: [
-    //       new ol.layer.Tile({
-    //         source: new ol.source.OSM()
-    //       })
-    //     ],
-    //     view: new ol.View({
-    //       center: ol.proj.fromLonLat([35.47, 78.46]),
-    //       zoom: 4
-    //     })
-    //   });
 
       //hide certain areas at start
       $("#polling").css("display","none");
@@ -54,7 +39,7 @@ $(document).ready(function() {
       $("#searchRepBtn").on("click", function(e){
           e.preventDefault();
           console.log("search btn clicked");
-        var enteredAddress=encodeURI($("#address").val().trim());
+        var enteredAddress=encodeURI($("#autocomplete").val().trim());
         //var saveInput = JSON.parse(localStorage.getItem("address"));//
            // $("#text").val("");//  <!-- local storage for address-->
            // $("#text").val(saveInput);//
@@ -92,8 +77,7 @@ $(document).ready(function() {
       $("#pollSearchBtn").on("click", function(e){
         e.preventDefault();
         console.log("poll search btn clicked");
-      var enteredAddress=encodeURI($("#address").val().trim());
-
+      var enteredAddress=encodeURI($("#autocomplete").val().trim());
       
       console.log(enteredAddress);
 
@@ -115,7 +99,7 @@ $(document).ready(function() {
     $("#candSearchBtn").on("click", function(e){
         e.preventDefault();
         console.log("cand search btn clicked");
-      var enteredAddress=encodeURI($("#address").val().trim());
+      var enteredAddress=encodeURI($("#autocomplete").val().trim());
       
       console.log(enteredAddress);
 
@@ -135,7 +119,7 @@ $(document).ready(function() {
     $("#earlySearchBtn").on("click", function(e){
         e.preventDefault();
         console.log("early vote search btn clicked");
-      var enteredAddress=encodeURI($("#address").val().trim());
+      var enteredAddress=encodeURI($("#autocomplete").val().trim());
       
       console.log(enteredAddress);
 
@@ -153,6 +137,7 @@ $(document).ready(function() {
 //======================================
 //Functions
 //=============================================================================
+
 //polling location function
 
 function pollingQuery (queryURLVoterInfo){
@@ -173,8 +158,6 @@ function pollingQuery (queryURLVoterInfo){
      $("#lowestRow").css("display","none");
      $("#polling").css("display","block");
      $("#elections").css("display","block");
-
-
 
      //
     //  if (response==="error") {
@@ -214,7 +197,11 @@ function pollingQuery (queryURLVoterInfo){
         console.log(response.election.electionDay);
         console.log(response.pollingLocations[p].address.locationName);
 
+
     }
+    //somehow this variable needs to be used in Jonathan's map function
+    var pollingLocationforMaps =response.pollingLocations[0].address.locationName
+    // fillInAddress();
 
 });
 }

@@ -1,3 +1,5 @@
+<!--center the buttons-->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,7 +10,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="./assets/style/style.css" />
         <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/css/ol.css" type="text/css">
         <!--Bulma link-->
@@ -25,6 +27,7 @@
             <div class="mx-auto">
                 <h2>About</h2>
         <div class="container" id="about">
+<<<<<<< HEAD
             <p>
                 There are many U.S. elections throughout the year, and both election information and political geography can shift with time.
                 <br>
@@ -34,6 +37,30 @@
                 <br>
                 Knowing who these representatives are and informing yourself about elections before voting is the most effective way to change how our government works.
             </p>
+=======
+            <div class="row" id="upperRow">
+                <div class="col-lg-12">
+                    <div class="panel panel-primary justify-content-center">
+                        <div class="panel-heading" id="panelHead">
+                            <h2 class="panel-title">About</h2>
+                        </div>
+                        <div class="panel-body">
+                            <p>
+                                This is an application designed to look up who a user’s elected representatives are locally and across the United States. Based on the user’s address, the application can find all the local, county, state, and federal official who represent the user in government. Click here to get information about your representatives
+                                <br>
+                                <!--button connects with search.html-->
+                                <a href="representatives.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"id="representBtn">Your Representatives</a>
+                                <br>
+                                There are many U.S. elections throughout the year, and both election information and political geography can shift with time. To see upcoming elections in your area and get information about the your candidates and polling locations and hours, enter your address below and click "Election Info".
+                                <br>
+                                <a href="polling.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"id="electionBtn">Election Info</a>
+                                <br>
+                                Knowing who your representatives are and informing yourself about elections before voting is the most effective way to change how our government works.
+                                 </p>
+                            </div>
+                    </div>
+                </div>
+>>>>>>> 415abaefb77a75a6664a22e21864e426e424f6d3
             </div>
         </div>
     </div>
@@ -41,30 +68,8 @@
             <div class="mx-auto">
                 <h3>Find Candidates</h3>
 
-        <!-- This displays the input that allows the user place thier address for polling location -->
+      
 
-        <div class="container" id="address">
-            <div class="row">
-              <div class="col-lg-12">
-                <h2>Enter your Address to See Your Polling Place Location</h2>
-                <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" class="form-control">
-                <button class="button is-rounded" type="search" id="search"><i class="fa fa-search"></i>Search</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container" id="map">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Polling Place for your Address</h2>
-                    <div class="map" id="map"></div>
-                </div>
-            </div>
-        </div>
-
-
-        
-    
 
 
 
@@ -75,13 +80,13 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-    <script src="initialize.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/build/ol.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI&signed_in=true&libraries=places&callback=initialize" async defer></script>
+        <script src="./assets/script/script.js"></script>
+        <script src="./assets/script/initialize.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/build/ol.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI&signed_in=true&libraries=places&callback=initialize" async defer></script>
 
     </body>
 </html>

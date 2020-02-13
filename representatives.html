@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="./assets/style/style.css" />
         <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.css" rel ="stylesheet">
 
@@ -41,11 +41,13 @@
                           <div class="tile is-child box">
                              
                             <div class="form-group ">
-                                <label for="search-term">Entered Address:</label>
-                                <!--retrieve entered address from index page from local storage-->
-                                <input type="text" class="form-control" id="address">
+                                <label for="search-term">Enter Address:</label>
+                                <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" class="form-control">
+                                <br>
+
+                             
                             </div>
-                        </div>
+                        </div> 
 
                             <!-- <div class="tile is-12 is-horizontal is-parent"> -->
 
@@ -115,7 +117,22 @@
     </div>
          
        
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- <script src="auto-complete.js"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI&libraries=places&callback=initAutocomplete" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+    <script src="./assets/script/script.js"></script>
+    <script src="./assets/script/initialize.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/build/ol.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI&signed_in=true&libraries=places&callback=initialize" async defer></script>
+    
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
@@ -124,10 +141,14 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
         <script src="script.js"></script>
-        <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI&callback=initMap"
-        type="text/javascript"></script> -->
+        <!--maps scripts-->
+        <!-- <script src="auto-complete.js"></script> -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI&libraries=places&callback=initAutocomplete" async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI&signed_in=true&libraries=places&callback=initialize" async defer></script>
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI&callback=initMap"
+        type="text/javascript"></script>
         <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/build/ol.js"></script>
 
     </body>
 </html>
-        
