@@ -27,3 +27,4 @@ The candidate information presents each cardidate in a card. The cards are sorte
 
 <img src ="./assets/images/project1IMg.png">
 <a href="#">Election Info Application</a>
+
