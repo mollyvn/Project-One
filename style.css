@@ -11,10 +11,12 @@
     text-shadow: black;
     text-align: center;
     font-size: 2em;
-    /* background-image: url("./assets/abstract-architecture-building-exterior-geometric-593158.jpg"); */
-
+   /* background-image: url("https://www.pexels.com/photo/abstract-architecture-building-exterior-geometric-593158/"); */
+   /* background-size: cover; */
+   
 
 }
+
 h1.jumboText{
     color: #d4d4dc;
 
