@@ -26,18 +26,18 @@ $(document).ready(function() {
     var queryURLSearchPage = queryBaseURL +"representatives" + APIkey+ "&address="
 
     //Map
-    var map = new ol.Map({
-        target: 'map',
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        view: new ol.View({
-          center: ol.proj.fromLonLat([35.47, 78.46]),
-          zoom: 4
-        })
-      });
+    // var map = new ol.Map({
+    //     target: 'map',
+    //     layers: [
+    //       new ol.layer.Tile({
+    //         source: new ol.source.OSM()
+    //       })
+    //     ],
+    //     view: new ol.View({
+    //       center: ol.proj.fromLonLat([35.47, 78.46]),
+    //       zoom: 4
+    //     })
+    //   });
 
       //hide certain areas at start
       $("#polling").css("display","none");
