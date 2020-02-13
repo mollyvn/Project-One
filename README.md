@@ -19,3 +19,5 @@ The application will also display a map that allows the user to loacte the neare
 
 
 
+<img src ="./assets/project1IMg.png>
+<a href="#">Election Info Application</a>

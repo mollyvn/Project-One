@@ -1,3 +1,5 @@
+<!--center the buttons-->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -38,6 +40,8 @@
                                 <br>
                                 There are many U.S. elections throughout the year, and both election information and political geography can shift with time. To see upcoming elections in your area and get information about the your candidates and polling locations and hours, enter your address below and click "Election Info".
                                 <br>
+                                <a href="polling.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"id="electionBtn">Election Info</a>
+                                <br>
                                 Knowing who your representatives are and informing yourself about elections before voting is the most effective way to change how our government works.
                                  </p>
                             </div>
@@ -46,26 +50,36 @@
             </div>
         </div>
 
-        <!-- This displays the input that allows the user place thier address for polling location -->
-
-        <div class="container" id="address">
+        <!-- <div class="container" id="address">
             <div class="row">
               <div class="col-lg-12">
+
+                <hr>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading"id="panelHead">
+                        <h2 class="panel-title">Enter your Address to See Your Polling Place Location</h2>
+                    </div>
+                        <div class="panel-body">
+                            <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" class="form-control">
+                            <div id="address">
+                            <br>
+                            
                 <h2>Enter your Address to See Your Polling Place Location</h2>
                 <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" class="form-control">
                 <button class="button is-rounded" type="search" id="search"><i class="fa fa-search"></i>Search</button>
               </div>
             </div>
           </div>
-        </div>
-        <div class="container" id="map">
+        </div> -->
+        <!-- <div class="container" id="map">
             <div class="row">
                 <div class="col-lg-12">
                     <h2>Polling Place for your Address</h2>
                     <div class="map" id="map"></div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
         
