@@ -21,20 +21,23 @@
     
     <body>
     <header>
-        <div class="jumbotron">
-             <h1>Know Your Vote</h1>
-            <p id="jumboText">Local Election Information</p>
+        <div class="jumbotron mx-auto">
+            <h1 class= "jumboText">Know Your Vote</h1>
+            <p class="jumboText">Election Information</p>
         </div>
            
     </header>
 
     <body>
+    <div class="container">
+
+        <!-- this whole row will be kicked out once local storage and jonathan's address work-->
         <div class="row" id="upperRow">
 
-            <div class="col-lg-4">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Search Parameters</h3>
+                    <div class="panel-heading"id="panelHead">
+                        <h2 class="panel-title">Search Parameters</h2>
                     </div>
                     <div class="panel-body">
 
@@ -43,7 +46,7 @@
                                 <div class="tile is-child box">
                                     
                                 <div class="form-group ">
-                                    <label for="search-term">Enter Address:</label>
+                                    <label for="search-term">Entered Address:</label>
                                     <input type="text" class="form-control" id="address">
                                 </div>
                                 
@@ -52,95 +55,124 @@
                             </div>
                         </div>
                                 
-                            <button class="button is-rounded" type="search" id="pollSearch"><i class="fa fa-search"></i>Submit</button>
-                            <button class="button is-rounded" id="backBtn"><a href="index.html">Go Back</a></button>
+                            <button class="btn btn-dark btn-lg" type="search" id="pollSearchBtn">Polling Location</button>
+                            <button class="btn btn-dark btn-lg" type="search" id="earlySearchBtn">Early Voting</button>
+                            <button class="btn btn-dark btn-lg" type="search" id="candSearchBtn">Candidates on Ballot</button>
 
-
+                            <a href="index.html" class="btn btn-dark btn-lg" role="button" aria-pressed="true"id="backBtn">Go Back</a>
                     </div>
                 </div>
             </div>
+        </div>
 
+        <!--this will later be the first row-->
+
+        <div class="row" id="lowerRow">
+
+            
             <div class="col-lg-4" id="elections">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Upcoming Election</h3>
+                    <div class="panel-heading"id="panelHead">
+                        <h2 class="panel-title">Upcoming Election</h2>
                     </div>
                     <div class="panel-body" >
 
                         <div class="tile is-ancestor">
                             <div class="tile is-12 is-vertical is-parent">
                                 <div class="tile is-child box"id="elecSection">
-                                    
-                                
                                 
                                 </div>
-                                
                             </div>
                         </div>
-                    
-                    
-                    
                     </div>
-         
                 </div>
             </div>
 
+            <div class="col-lg-4" id="mapCon">
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="panelHead">
+                        <h2 class="panel-title">Location on Map</h2>
+                    </div>
+                    <div class="panel-body" >
+                        <div class="tile is-ancestor">
+                            <div class="tile is-12 is-vertical is-parent"> 
+                            <div class="tile is-child box">
+                                <div class="map" id="map"></div>
+                            
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
             <div class="col-lg-4" id="polling">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Polling Locations</h3>
+                    <div class="panel-heading"id="panelHead">
+                        <h2 class="panel-title">Polling Locations</h2>
                     </div>
                     <div class="panel-body" >
 
                         <div class="tile is-ancestor">
                             <div class="tile is-12 is-vertical is-parent">
                                 <div class="tile is-child box"id="pollSection">
-                                    
-                                
-                                
                                 </div>
-                                
                             </div>
                         </div>
-                    
-                    
-                    
                     </div>
-         
+                </div>
+            </div>
+
+
+            
+
+
+    </div>
+
+    <!--eraly vote row-->
+    <div class="row" id="secondLowestRow">
+
+        <div class="col-lg-12" id="earlyVotes">
+            <div class="panel panel-default">
+                <div class="panel-heading"id="panelHead">
+                    <h2 class="panel-title">Early Voting</h2>
+                </div>
+                <div class="panel-body">
+
+                    <div class="tile is-ancestor" id="earlyVoteSection">
+                        <div class="tile is-12 is-vertical is-parent" >
+                            <div class="tile is-child box">
+                            </div>  
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+  
 
         <!--Results should show upcomign election, polling address and candidates. It works in console log but there is a bug that its not appending without throwing an error-->
 
-        <div class="row" id="lowerRow">
-            <div class="col-lg-12" id="candidates">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Candidates</h3>
-                    </div>
-                    <div class="panel-body" >
+    <div class="row" id="lowestRow">
+        <div class="col-lg-12" id="candidates">
+            <div class="panel panel-default">
+                <div class="panel-heading"id="panelHead">
+                    <h2 class="panel-title">Candidates</h2>
+                </div>
+                <div class="panel-body" >
 
-                        <div class="tile is-ancestor">
-                            <div class="tile is-12 is-vertical is-parent">
-                                <div class="tile is-child box"id="candidateSection">
-                                    
-                                
-                                
-                                </div>
-                                
-                            </div>
+                    <div class="tile is-ancestor">
+                        <div class="tile is-12 is-vertical is-parent">
+                            <div class="tile is-child box"id="candidateSection">
+                            </div>  
                         </div>
-                    
-                    
-                    
                     </div>
-         
                 </div>
             </div>
-    
-            
         </div>
+    </div>
+</div>
 
 
 

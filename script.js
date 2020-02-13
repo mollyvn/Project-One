@@ -26,27 +26,38 @@ $(document).ready(function() {
     var queryURLSearchPage = queryBaseURL +"representatives" + APIkey+ "&address="
 
     //Map
-    var map = new ol.Map({
-        target: 'map',
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        view: new ol.View({
-          center: ol.proj.fromLonLat([35.47, 78.46]),
-          zoom: 4
-        })
-      });
+    // var map = new ol.Map({
+    //     target: 'map',
+    //     layers: [
+    //       new ol.layer.Tile({
+    //         source: new ol.source.OSM()
+    //       })
+    //     ],
+    //     view: new ol.View({
+    //       center: ol.proj.fromLonLat([35.47, 78.46]),
+    //       zoom: 4
+    //     })
+    //   });
+
+      //hide certain areas at start
+      $("#polling").css("display","none");
+      $("#elections").css("display","none");
+      $("#secondLowestRow").css("display","none");
+      $("#lowestRow").css("display","none");
+      $("#lowerRow").css("display","none");
+
 
     //=============================================================================
     //Event Listeners
     //=============================================================================
     //representatives
-      $("#search").on("click", function(e){
+      $("#searchRepBtn").on("click", function(e){
           e.preventDefault();
           console.log("search btn clicked");
         var enteredAddress=encodeURI($("#address").val().trim());
+        //var saveInput = JSON.parse(localStorage.getItem("address"));//
+           // $("#text").val("");//  <!-- local storage for address-->
+           // $("#text").val(saveInput);//
         var levels =$("#levels").val();
         var roles=$("#roles").val();
         console.log(enteredAddress);
@@ -78,10 +89,11 @@ $(document).ready(function() {
 
       //poll search
 
-      $("#pollSearch").on("click", function(e){
+      $("#pollSearchBtn").on("click", function(e){
         e.preventDefault();
-        console.log("search btn clicked");
+        console.log("poll search btn clicked");
       var enteredAddress=encodeURI($("#address").val().trim());
+
       
       console.log(enteredAddress);
 
@@ -93,6 +105,47 @@ $(document).ready(function() {
       $("#wellSection").empty();
 
       pollingQuery(NewQueryURLVoterInfo);
+      console.log("POLLING DATS", NewQueryURLVoterInfo)
+     
+      return false;
+    })
+
+    //cand search
+
+    $("#candSearchBtn").on("click", function(e){
+        e.preventDefault();
+        console.log("cand search btn clicked");
+      var enteredAddress=encodeURI($("#address").val().trim());
+      
+      console.log(enteredAddress);
+
+      var NewQueryURLVoterInfo= queryBaseURL + "voterinfo" +APIkey + "&address=" +enteredAddress;
+      console.log(NewQueryURLVoterInfo);
+      if(enteredAddress===""){
+          return;
+      }
+
+      candidateQuery(NewQueryURLVoterInfo);
+     
+      return false;
+    })
+
+    //early vot event listener
+
+    $("#earlySearchBtn").on("click", function(e){
+        e.preventDefault();
+        console.log("early vote search btn clicked");
+      var enteredAddress=encodeURI($("#address").val().trim());
+      
+      console.log(enteredAddress);
+
+      var NewQueryURLVoterInfo= queryBaseURL + "voterinfo" +APIkey + "&address=" +enteredAddress;
+      console.log(NewQueryURLVoterInfo);
+      if(enteredAddress===""){
+          return;
+      }
+
+      earlyVoteQuery(NewQueryURLVoterInfo);
      
       return false;
     })
@@ -107,11 +160,21 @@ function pollingQuery (queryURLVoterInfo){
     $.ajax({url: queryURLVoterInfo,
         method: "GET"
     }).then(function(response){  
+        
 
 
      $("#elecSection").empty();
      $("#pollSection").empty();
-     $("#candidateSection").empty();
+
+     //take out other rows
+     $("#lowerRow").css("display","flex");
+     $("#map").css("display","flex");
+     $("#secondLowestRow").css("display","none");
+     $("#lowestRow").css("display","none");
+     $("#polling").css("display","block");
+     $("#elections").css("display","block");
+
+
 
      //
     //  if (response==="error") {
@@ -139,12 +202,12 @@ function pollingQuery (queryURLVoterInfo){
         $("#pollSection").append(locationSection);
 
         //attach the content to well
-        $("#pollWell-"+p).append("<h3>Location : <br>"+response.pollingLocations[p].address.locationName + 
+        $("#pollWell-"+p).append("<h2>Location : <br>"+response.pollingLocations[p].address.locationName + 
             "<br>"+ response.pollingLocations[p].address.line1 + ", " 
             + response.pollingLocations[p].address.city + ", "
             + response.pollingLocations[p].address.state + ", "
-            + response.pollingLocations[p].address.zip+"</h3><br>");
-        $("#pollWell-"+p).append("<h3>Polling Hours: <br>"+response.pollingLocations[p].pollingHours+"</h3>");
+            + response.pollingLocations[p].address.zip+"</h2><br>");
+        $("#pollWell-"+p).append("<h2>Polling Hours: <br>"+response.pollingLocations[p].pollingHours+"</h2>");
         
         //console log bc some appending issue, but data shows correctly in console
         console.log(response.election.name);
@@ -153,38 +216,140 @@ function pollingQuery (queryURLVoterInfo){
 
     }
 
+});
+}
+
+///candidate function
+
+function candidateQuery(queryURLVoterInfo){
+    console.log('candidate function runs');
+    $.ajax({url: queryURLVoterInfo,
+        method: "GET"
+    }).then(function(response){  
+        
+     $("#candidateSection").empty();
+
+     //take out map and location etc
+     $("#lowestRow").css("display", "block");
+    $("#secondLowestRow").css("display","none");
+    $("#lowerRow").css("display","none");
+
+
     //add contestants when appending works- for now only console log test
     for (var c=0; c<response.contests.length; c++){
         var candidateSection=$("<div>");
+        var candidateContainer = $("<div class='candidate-container'>");
         candidateSection.addClass("well");
         candidateSection.attr('id', 'candWell-'+c );
         $("#candidateSection").append(candidateSection);
 
         //attach the content to well
-        $("#candWell-"+c).append("<h3 style='font-weight:bold;'>Ballot Placement: "+response.contests[c].ballotPlacement+ "</h3>");
-        $("#candWell-"+c).append("<h3 style='font-weight:bold;'>Ballot Title/ Office : "+response.contests[c].office + "</h3> <hr class='my-4'>");
+        $("#candWell-"+c).append("<h2 style='font-weight:bold;'>Ballot Placement: "+response.contests[c].ballotPlacement+ "</h2>");
+        $("#candWell-"+c).append("<h2 style='font-weight:bold;'>Ballot Title/ Office : "+response.contests[c].office + "</h2> <hr class='my-4'>");
         for (var a=0; a<response.contests[c].candidates.length; a++){
-            console.log(response.contests[c].candidates.length);
-            $("#candWell-"+c).append("<h4>Candidate: "+response.contests[c].candidates[a].name+ "</h4>");
-            $("#candWell-"+c).append("<h4>Party: "+response.contests[c].candidates[a].party+ "</h4><hr>");
+            var candidateCard = $("<div class='candidate-card'>");
+            // console.log(response.contests[c].candidates.length);
+            $(candidateCard).append("<p>Candidate: "+response.contests[c].candidates[a].name+ "</p>");
+            $(candidateCard).append("<p>Party: "+response.contests[c].candidates[a].party+ "</p>");
+            $(candidateContainer).append(candidateCard);
+            $("#candWell-"+c).append(candidateContainer);
+
+            var green =response.contests[c].candidates[0].party==="GREEN";
+            var liberatarian= response.contests[c].candidates[0].party==="LIBERTARIAN";
+            var democratic= response.contests[c].candidates[0].party==="DEMOCRATIC";
+            var republican = response.contests[c].candidates[0].party==="REPUBLICAN";
+        
+            
+            if(green){
+                $(candidateCard).css("background-color","#e3eaa7");
+
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px #e3eaa7");
+                $("#candWell-"+c).css("border-radius", "5px");
+            } else if (liberatarian){
+                $(candidateCard).css("background-color","#ffef96");
+
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px #ffef96");
+                $("#candWell-"+c).css("border-radius", "5px");
+            }else if (democratic){
+                $(candidateCard).css("background-color","#deeaee");
+                
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px #deeaee");
+                $("#candWell-"+c).css("border-radius", "5px");
+            } else if(republican){
+                $(candidateCard).css("background-color","#eca1a6");
+
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px #eca1a6");
+                $("#candWell-"+c).css("border-radius", "5px");
+            }  else {
+                $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px gray");
+            }
         }
         
-        
+        }
 
-        // if(response.contests[c].candidates[0].party==="GREEN"){
-        //     $(".well").css("background-color", "#2ecc40");
-        // } else if (response.contests[c].candidates[0].party==="LIBERTARIAN"){
-        //     $(".well").css("background-color", "#ffdc00");
-        // }else if (response.contests[c].candidates[0].party==="DEMOCRATIC"){
-        //     $(".well").css("background-color", "#7FDBFF");
-        // } else if(response.contests[c].candidates[0].party==="REPUBLICAN"){
-        //     $(".well").css("background-color", "#FF4136");
-        // }  else {
-        //     $(".well").css("background-color", "none");
-        // }
-    }
 
     });
+}
+
+//early voting info
+
+function earlyVoteQuery(queryURLVoterInfo){
+    console.log('candidate function runs');
+    $.ajax({url: queryURLVoterInfo,
+        method: "GET"
+    }).then(function(response){  
+        
+        $("#elecSection").empty();
+        $("#pollSection").empty();
+        $("#earlyVoteSection").empty();
+
+//hide other rows
+    $("#lowerRow").css("display","none");
+     $("#secondLowestRow").css("display","block");
+     $("#lowestRow").css("display","none");
+
+    //put into HTML
+    var electionSection=$('<div>');
+    electionSection.addClass("well");
+    electionSection.attr('id', 'elWell');
+    $('#elecSection').append(electionSection);
+
+
+    //Attach election content to approp section
+    $("#elWell").append("<h2>Election: <br>"+ response.election.name+"</h2><br>");
+    $("#elWell").append("<h2>Election Day: <br>"+ response.election.electionDay+"</h2>");
+
+    //take out candidate column and empty polling loc column
+    $("#lowestRow").css("display", "none");
+    $("#polling").css("display","none");
+
+
+    //data for polling places
+
+    for (var e=0; e<response.earlyVoteSites.length; e++){
+        var earlyLocationSection=$("<div>");
+        earlyLocationSection.addClass("card");
+        earlyLocationSection.attr('id', 'earlyWell-'+e );
+        $("#earlyVoteSection").append(earlyLocationSection);
+
+        //attach the content to well
+        $("#earlyWell-"+e).append("<h2>Location : <br>"+response.earlyVoteSites[e].address.locationName + 
+            "<br>"+ response.earlyVoteSites[e].address.line1 + ", " 
+            + response.earlyVoteSites[e].address.city + ", "
+            + response.earlyVoteSites[e].address.state + ", "
+            + response.earlyVoteSites[e].address.zip+"</h2><br>");
+        $("#earlyWell-"+e).append("<h2>Polling Hours: <br>"+response.earlyVoteSites[e].pollingHours+"</h2><br>");
+        $("#earlyWell-"+e).append("<h2>Start Date: <br>"+response.earlyVoteSites[e].startDate+"</h2><br>");
+        $("#earlyWell-"+e).append("<h2>End Date: <br>"+response.earlyVoteSites[e].endDate+"</h2>");
+
+        
+        //console log bc some appending issue, but data shows correctly in console
+      
+        console.log(response.earlyVoteSites[e].address.locationName);
+
+    }
+     
+});
 }
 
 //representative function 
@@ -199,6 +364,8 @@ function runRepresentativeQuery(queryURLRepresentatives){
         console.log(response);
 
         $("#wellSection").empty();
+        $("#lowerRow").css("display","flex");
+
 
         for (var i=0; i<response.officials.length; i++){
     
@@ -232,7 +399,7 @@ function runRepresentativeQuery(queryURLRepresentatives){
             $("#repWell-"+i).append("<h4>Name: "+response.officials[i].name+"</h4>");
             $("#repWell-"+i).append("<h4>Party: "+response.officials[i].party+"</h4>");
     
-            // var offUrl = (response.officials[i].urls && response.officials[i].urls[0]) ? response.officials[i].urls[0] : "no url available";
+            var offUrl = (response.officials[i].urls && response.officials[i].urls[0]) ? response.officials[i].urls[0] : "no url available";
 
             var offUrl;
 
