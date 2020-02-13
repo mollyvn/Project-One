@@ -47,6 +47,7 @@ $(document).ready(function() {
           e.preventDefault();
           console.log("search btn clicked");
         var enteredAddress=encodeURI($("#address").val().trim());
+        localStorage.setItem("enteredAddress, ");
         var levels =$("#levels").val();
         var roles=$("#roles").val();
         console.log(enteredAddress);
@@ -82,6 +83,7 @@ $(document).ready(function() {
         e.preventDefault();
         console.log("search btn clicked");
       var enteredAddress=encodeURI($("#address").val().trim());
+
       
       console.log(enteredAddress);
 
