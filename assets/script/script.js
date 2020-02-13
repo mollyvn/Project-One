@@ -12,32 +12,17 @@ $(document).ready(function() {
     var map;
 
     //default address to test
-    var defaultAddress="209%20W.%20Wilder%20Ave.%20Tampa%20FL"
-    var defaultElectionID= "2000";
-    //buttons
-    var submitBtn =$("#submit");
+    // var defaultAddress="209%20W.%20Wilder%20Ave.%20Tampa%20FL"
+    // var defaultElectionID= "2000";
     
     // URL base representatives
     var queryBaseURL="https://www.googleapis.com/civicinfo/v2/";
-    var queryURLElection= queryBaseURL + "elections" +APIkey;
-    var queryURLVoterInfo= queryBaseURL + "voterinfo" +APIkey + "&address=" +defaultAddress;
+    // var queryURLElection= queryBaseURL + "elections" +APIkey;
+    // var queryURLVoterInfo= queryBaseURL + "voterinfo" +APIkey + "&address=" +defaultAddress;
     // var queryURLDivisions= queryBaseURL + "division" +APIkey + "&address=" +defaultAddress;
-    var queryURLRepresentatives= queryBaseURL +"representatives" + APIkey+ "&address=" +defaultAddress;
-    var queryURLSearchPage = queryBaseURL +"representatives" + APIkey+ "&address="
+    // var queryURLRepresentatives= queryBaseURL +"representatives" + APIkey+ "&address=" +defaultAddress;
+    // var queryURLSearchPage = queryBaseURL +"representatives" + APIkey+ "&address="
 
-    //Map
-    // var map = new ol.Map({
-    //     target: 'map',
-    //     layers: [
-    //       new ol.layer.Tile({
-    //         source: new ol.source.OSM()
-    //       })
-    //     ],
-    //     view: new ol.View({
-    //       center: ol.proj.fromLonLat([35.47, 78.46]),
-    //       zoom: 4
-    //     })
-    //   });
 
       //hide certain areas at start
       $("#polling").css("display","none");
@@ -216,7 +201,7 @@ function pollingQuery (queryURLVoterInfo){
     }
     //somehow this variable needs to be used in Jonathan's map function
     var pollingLocationforMaps =response.pollingLocations[0].address.locationName
-    fillInAddress(pollingLocationforMaps);
+    // fillInAddress();
 
 });
 }
