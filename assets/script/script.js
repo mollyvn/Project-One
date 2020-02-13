@@ -42,7 +42,7 @@ $(document).ready(function() {
         var enteredAddress=encodeURI($("#autocomplete").val().trim());
         var saveInput = JSON.parse(localStorage.getItem("autocomplete"));
            $("#autocomplete").val("");
-           $("#autocomplete").val(saveInput)
+           $(saveInput).val("#autocomplete")
         var levels =$("#levels").val();
         var roles=$("#roles").val();
         console.log(enteredAddress);
