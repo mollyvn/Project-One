@@ -55,6 +55,9 @@ $(document).ready(function() {
           e.preventDefault();
           console.log("search btn clicked");
         var enteredAddress=encodeURI($("#autocomplete").val().trim());
+        //var saveInput = JSON.parse(localStorage.getItem("address"));//
+           // $("#text").val("");//  <!-- local storage for address-->
+           // $("#text").val(saveInput);//
         var levels =$("#levels").val();
         var roles=$("#roles").val();
         console.log(enteredAddress);
