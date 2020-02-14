@@ -36,6 +36,10 @@ h1.jumboText{
    margin: 10px 10px 30px 10px;
 } 
 
+a {
+    color: #feda6a !important;
+}
+
 #map {
     height: 300px;
     width: 100%;
@@ -62,23 +66,39 @@ h1.jumboText{
 
   
 
-
-#electionBtn,
-#representBtn,
-#searchRepBtn,
-#earlySearchBtn,
-#pollSearchBtn,
-#candSearchBtn{
-    margin:15px;
+#searchRepBtn{
+    margin: 20px;
     background-color: #393f4d;
     color: #feda6a;
     border-color: #feda6a;
     border-radius: 20px;
-    font-size: 15px;
+    font-size: 20px;
+}
+#homeBtn{
+    margin: 20px;
+    background-color: #393f4d;
+    color: #feda6a;
+    border-color: #feda6a;
+    border-radius: 20px;
+    font-size: 20px;
+    float: right;
+} 
+
+#electionBtn,
+#representBtn,
+#earlySearchBtn,
+#pollSearchBtn,
+#candSearchBtn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #393f4d;
+    color: #feda6a;
+    border-color: #feda6a;
+    border-radius: 20px;
+    font-size: 16px;
     
 }  
-#backBtn,
-#homeBtn{
+#backBtn {
     float:right;
     margin:15px;
     background-color: #393f4d;
