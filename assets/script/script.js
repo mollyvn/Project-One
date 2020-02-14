@@ -40,9 +40,21 @@ $(document).ready(function() {
           e.preventDefault();
           console.log("search btn clicked");
         var enteredAddress=encodeURI($("#autocomplete").val().trim());
-        var saveInput = JSON.parse(localStorage.getItem("autocomplete"));
-           $("#autocomplete").val("");
-           $(saveInput).val("#autocomplete")
+        // var saveInput =   $("#autocomplete").val();
+
+        // if(saveInput===""){
+        //     return;
+        // }
+        
+        // // var storeAddress;
+
+        // localStorage.setItem("saveInput", JSON.stringify(saveInput));
+        
+
+
+       // $("#autocomplete").val(""); //
+       // $(saveInput).val("#autocomplete") //
+          // $(saveInput).val("#autocomplete") //
         var levels =$("#levels").val();
         var roles=$("#roles").val();
         console.log(enteredAddress);

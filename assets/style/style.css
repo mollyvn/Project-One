@@ -67,12 +67,13 @@ h1.jumboText{
 #earlySearchBtn,
 #pollSearchBtn,
 #candSearchBtn{
-    margin:15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     background-color: #393f4d;
     color: #feda6a;
     border-color: #feda6a;
     border-radius: 20px;
-    font-size: 15px;
+    font-size: 16px;
     
 }  
 #backBtn,
