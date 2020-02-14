@@ -46,11 +46,13 @@ h1.jumboText{
   .panel{
       border-color:  #393f4d;
       box-shadow: 2px 2px 3px 3px #393f4d;
+      height: 300px;
   }
 
   .panel-body{
       margin: 10px;
       padding: 10px;
+      height: 300px;
   }
 
   .panel-heading{
