@@ -40,21 +40,9 @@ $(document).ready(function() {
           e.preventDefault();
           console.log("search btn clicked");
         var enteredAddress=encodeURI($("#autocomplete").val().trim());
-        // var saveInput =   $("#autocomplete").val();
-
-        // if(saveInput===""){
-        //     return;
-        // }
-        
-        // // var storeAddress;
-
-        // localStorage.setItem("saveInput", JSON.stringify(saveInput));
-        
-
-
-       // $("#autocomplete").val(""); //
-       // $(saveInput).val("#autocomplete") //
-          // $(saveInput).val("#autocomplete") //
+        //var saveInput = JSON.parse(localStorage.getItem("address"));//
+           // $("#text").val("");//  <!-- local storage for address-->
+           // $("#text").val(saveInput);//
         var levels =$("#levels").val();
         var roles=$("#roles").val();
         console.log(enteredAddress);
@@ -376,29 +364,17 @@ function runRepresentativeQuery(queryURLRepresentatives){
     
             //put into HTML
             var wellSection=$('<div>');
-            var photoUrl;
             wellSection.addClass("card");
             wellSection.attr('id', 'repWell-'+i);
             $('#wellSection').append(wellSection);
-    
-            // if(!response.officials[i].photoUrl){
-            //     console.log(response.officials[i].name);
-            //     $("#repWell-"+i).append("<img src='http://placehold.it/128x128'>");
-    
-            // }
 
-            //the urls throw errors bc some don't have any(I think), so I commented it out for now
+
+            var imgUrl = response.officials[i].photoUrl || "http://placehold.it/128x128";
+
     
-            // if(response.officials[i].urls[0]=="null" || response.officials[i].urls[0]==="undefined"){
-            //     console.log(response.officials[i].name);
-            //     $("#repWell-"+i).append("<h4>No URL available</h4>");
-    
-            // }
-            
-            photoUrl = response.officials[i].photoUrl ? response.officials[i].photoUrl : 'http://placehold.it/128x128';
             //Attach content to approp well
-            $("#repWell-"+i).append("<div class='card-image'><figure class='image is-128x128'><img src=" + photoUrl + "></figure></div>");
-            $("#repWell-"+i).append("<div class='card-content'><div class='content>");
+            $("#repWell-"+i).append("<div class='card-image mx-auto'><figure class='image is-128x128'><img src=" +imgUrl+"></figure></div>");
+            $("#repWell-"+i).append("<div class='card-content mx-auto'><div class='content>");
             $("#repWell-"+i).append("<h4>Office: "+response.offices[i].name+"</h4>");
     
             $("#repWell-"+i).append("<h4>Name: "+response.officials[i].name+"</h4>");
