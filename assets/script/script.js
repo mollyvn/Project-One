@@ -192,6 +192,16 @@ function pollingQuery (queryURLVoterInfo){
             + response.pollingLocations[p].address.zip+"</h2><br>");
         $("#pollWell-"+p).append("<h2>Polling Hours: <br>"+response.pollingLocations[p].pollingHours+"</h2>");
         
+        var addr = response.pollingLocations[p].address.line1 + " " + response.pollingLocations[p].address.city + " " + response.pollingLocations[p].address.state + " " + response.pollingLocations[p].address.zip;
+
+        console.log("adress to pin:", addr);
+
+        //fillInAddress()
+        console.log(response);
+
+        codeAddress(addr);
+
+
         //console log bc some appending issue, but data shows correctly in console
         console.log(response.election.name);
         console.log(response.election.electionDay);
