@@ -237,6 +237,10 @@ p{
         font-size:1.1em;
     }
 
+    #panelHead{
+        font-size:1em;
+    }
+
     #repSearchBtn,
     #electionBtn,
     #representBtn,
