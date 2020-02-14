@@ -53,10 +53,55 @@
                                         <button class="btn btn-dark btn-lg" type="search" id="pollSearchBtn">Polling Location</button>
                                         <button class="btn btn-dark btn-lg" type="search" id="earlySearchBtn">Early Voting</button>
                                         <button class="btn btn-dark btn-lg" type="search" id="candSearchBtn">Candidates on Ballot</button>
+                                        <button class="btn btn-dark btn-lg" type="search" id="repSearchBtn">Current Representatives</button>
 
                                         <a href="index.html" class="btn btn-dark btn-lg" role="button" aria-pressed="true"id="backBtn">Go Back</a>
                                     
                                     </div>
+
+                                    <!--appears when rep button is clicked-->
+                                    <div id="repPopUp">
+                                        <div class="tile is-child box is-12" >
+                                            <div class="form-group">
+                                                <label class="mr-sm-2" for="sel1">Levels:</label>
+                                                <select class="form-control" id="levels">
+                                                    <option selected>Choose...</option>
+                                                    <!-- <option value="international">International</option> -->
+                                                    <option value="country">Country</option>
+                                                    <option value="administrativeArea1">Top-Level Subdivision, e.g. US states</option>
+                                                    <option value="locality">City or Municipal Governments</option>
+                                                    <option value="administrativeArea12">Second-Level Subdivision, e.g. US counties</option>
+                                                    <option value="regional">Regional (usually only in large cities)</option>
+                                                
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="tile is-child box is-12">
+                                            <div class="form-group">
+                                                <label class="mr-sm-2" for="sel1">Roles:</label>
+                                                <select class="form-control" id="roles">
+                                                
+                                                <option selected>Choose...</option>
+                                                <option value="deputyHeadOfGovernment">Deputy Head of Government</option>
+                                                <option value="executiveCouncil">Executive Council</option>
+                                                <option value="governmentOfficer">Government Officer</option>
+                                                <option value="headOfState">Head of State</option>
+                                                <option value="highestCourtJudge">Highest Court Judge</option>
+                                                <option value="judge">Judge</option>
+                                                <option value="legislatorLowerBody">Legislator Lower Body</option>
+                                                <option value="legislatorUpperBody">Legislator Upper Body</option>
+                                                <option value="schoolBoard">School Board</option>
+                                                <option value="specialPurposeOfficer">Special Purpose Officer</option>
+                                            
+                                                </select>
+                                            </div>
+                                            </div>
+                                        
+                                    <button class="btn btn-primary btn-lg" type="search" id="searchRepBtn">Submit</button>
+                                    <a href="polling.html" class="btn btn-dark btn-lg" role="button" aria-pressed="true"id="backBtn">Go Back</a>
+                                    </div>
+                                 <!--end popupRow-->
                                 </div>
                             </div>
                         </div>
@@ -128,8 +173,98 @@
         </div>
     <!-- </div> -->
 
+    <!--rep row-->
 
-    <!--eraly vote row-->
+    <!-- <div class="row" id="repRow">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="panelHead">
+                    <h2 class="panel-title">Search Parameters</h2>
+                </div>
+                <div class="panel-body"></div>
+                <form role="form">
+
+                <div class="tile is-ancestor">
+                    <div class="tile is-12 is-vertical is-parent">
+                      <div class="tile is-child box">
+                         
+                        <div class="form-group ">
+                            <label for="search-term">Enter Address:</label>
+                            <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" class="form-control">
+                            <br>
+
+                         
+                        </div>
+                    </div> 
+
+
+                    <div class="tile is-child box is-12">
+                        <div class="form-group">
+                            <label class="mr-sm-2" for="sel1">Levels:</label>
+                            <select class="form-control" id="levels">
+                                <option selected>Choose...</option>
+                                <!-- <option value="international">International</option> -->
+                                <!-- <option value="country">Country</option>
+                                <option value="administrativeArea1">Top-Level Subdivision, e.g. US states</option>
+                                <option value="locality">City or Municipal Governments</option>
+                                <option value="administrativeArea12">Second-Level Subdivision, e.g. US counties</option>
+                                <option value="regional">Regional (usually only in large cities)</option>
+                            
+                            </select>
+                        </div>
+                    </div>
+                        
+                    <div class="tile is-child box is-12">
+                        <div class="form-group">
+                            <label class="mr-sm-2" for="sel1">Roles:</label>
+                            <select class="form-control" id="roles">
+                            
+                            <option selected>Choose...</option>
+                            <option value="deputyHeadOfGovernment">Deputy Head of Government</option>
+                            <option value="executiveCouncil">Executive Council</option>
+                            <option value="governmentOfficer">Government Officer</option>
+                            <option value="headOfState">Head of State</option>
+                            <option value="highestCourtJudge">Highest Court Judge</option>
+                            <option value="judge">Judge</option>
+                            <option value="legislatorLowerBody">Legislator Lower Body</option>
+                            <option value="legislatorUpperBody">Legislator Upper Body</option>
+                            <option value="schoolBoard">School Board</option>
+                            <option value="specialPurposeOfficer">Special Purpose Officer</option>
+                        
+                            </select>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                    <button class="btn btn-primary btn-lg" type="search" id="searchRepBtn">Submit</button>
+                    <a href="index.html" class="btn btn-dark btn-lg" role="button" aria-pressed="true"id="backBtn">Go Back</a>
+                </form>
+
+            
+            </div>
+        </div>
+    </div> --> 
+
+      <!--RepResults-->
+      <div class="row" id="repResultRow">
+
+        <div class="col-lg-12" id="search-results">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="panelHead">
+                    <h2 class="panel-title">Representatives</h2>
+                </div>
+                <div class="panel-body" id="wellSection">
+                </div>
+                        
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--early vote row-->
 
     <!-- <div class="container"> -->
     <div class="row" id="secondLowestRow">
@@ -137,7 +272,7 @@
         <div class="col-lg-12" id="earlyVotes">
             <div class="panel panel-default">
                 <div class="panel-heading"id="panelHead">
-                    <h2 class="panel-title">Early Voting</h2>
+                    <h2 class="panel-title">Early Voting Locations and Times</h2>
                 </div>
                 <div class="panel-body">
 

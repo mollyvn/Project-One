@@ -1,8 +1,4 @@
 
-//address needs to be turned into lat and long to create a pin
-//polling place data needs to be pulled to create the pin
-//I think having Bootstrap and Bulma messes up the style, is that possible?!?
-
 $(document).ready(function() {
     //=============================================================================
     //Set up variables
@@ -10,35 +6,42 @@ $(document).ready(function() {
     
     var APIkey= "?key=AIzaSyC1MqND2SWxPfzCLjrWJW7tagrSmpgr6dI";
     var map;
-
-    //default address to test
-    // var defaultAddress="209%20W.%20Wilder%20Ave.%20Tampa%20FL"
-    // var defaultElectionID= "2000";
-    
-    // URL base representatives
     var queryBaseURL="https://www.googleapis.com/civicinfo/v2/";
-    // var queryURLElection= queryBaseURL + "elections" +APIkey;
-    // var queryURLVoterInfo= queryBaseURL + "voterinfo" +APIkey + "&address=" +defaultAddress;
-    // var queryURLDivisions= queryBaseURL + "division" +APIkey + "&address=" +defaultAddress;
-    // var queryURLRepresentatives= queryBaseURL +"representatives" + APIkey+ "&address=" +defaultAddress;
-    // var queryURLSearchPage = queryBaseURL +"representatives" + APIkey+ "&address="
-
-
+    
       //hide certain areas at start
       $("#polling").css("display","none");
       $("#elections").css("display","none");
       $("#secondLowestRow").css("display","none");
       $("#lowestRow").css("display","none");
       $("#lowerRow").css("display","none");
-
+      $("#repPopUp").css("display","none");
+      $("#repResultRow").css("display", "none");
 
     //=============================================================================
     //Event Listeners
     //=============================================================================
-    //representatives
+    
+    //button to open the rep section
+
+    $("#repSearchBtn").on("click", function(e){
+        $("#repPopUp").css("display","block");
+        // $("#upperRow").css("display","none");
+        $("#repSearchBtn").css("display", "none");
+        $("#earlySearchBtn").css("display","none");
+        $("#pollSearchBtn").css("display","none");
+        $("#candSearchBtn").css("display","none");
+        $("#backBtn").css("display","none");  
+        //don't display rows that areant rep rows
+        $("#lowestRow").css("display","none");  //candidate row
+    });
+    
+    //representatives click event
       $("#searchRepBtn").on("click", function(e){
           e.preventDefault();
           console.log("search btn clicked");
+          $("#repRow").css("display","block");
+          $("#repResultsRow").css("display","flex");
+
         var enteredAddress=encodeURI($("#autocomplete").val().trim());
         //var saveInput = JSON.parse(localStorage.getItem("address"));//
            // $("#text").val("");//  <!-- local storage for address-->
@@ -53,7 +56,7 @@ $(document).ready(function() {
         if(enteredAddress===""){
             return;
         }
-        // $("#wellSection").empty();
+        $("#wellSection").empty();
 
         if(levels==="Choose..."&&roles=="Choose..."){
             enteredAddressURL = queryBaseURL +"representatives" + APIkey+  "&address=" + enteredAddress;
@@ -72,7 +75,7 @@ $(document).ready(function() {
       })
 
 
-      //poll search
+      //polling search click event
 
       $("#pollSearchBtn").on("click", function(e){
         e.preventDefault();
@@ -94,7 +97,7 @@ $(document).ready(function() {
       return false;
     })
 
-    //cand search
+    //candidate search click event
 
     $("#candSearchBtn").on("click", function(e){
         e.preventDefault();
@@ -114,7 +117,7 @@ $(document).ready(function() {
       return false;
     })
 
-    //early vot event listener
+    //early voting event listener
 
     $("#earlySearchBtn").on("click", function(e){
         e.preventDefault();
@@ -145,8 +148,6 @@ function pollingQuery (queryURLVoterInfo){
     $.ajax({url: queryURLVoterInfo,
         method: "GET"
     }).then(function(response){  
-        
-
 
      $("#elecSection").empty();
      $("#pollSection").empty();
@@ -159,22 +160,23 @@ function pollingQuery (queryURLVoterInfo){
      $("#polling").css("display","block");
      $("#elections").css("display","block");
 
-     //
-    //  if (response==="error") {
-    //      $("#elecSection").html("<p>No elections in the near future available or error in address.<p>")
-    //  } else
-    
-
     //put into HTML
     var electionSection=$('<div>');
     electionSection.addClass("well");
     electionSection.attr('id', 'elWell');
     $('#elecSection').append(electionSection);
 
+    // if (response===!response) {
+    //     $("#elecSection").html("<p>Error: "+ response. error.errors[0].message);
+    // }
 
     //Attach election content to approp section
     $("#elWell").append("<h2>Election: <br>"+ response.election.name+"</h2><br>");
     $("#elWell").append("<h2>Election Day: <br>"+ response.election.electionDay+"</h2>");
+
+    if (response==="error") {
+        $("#elecSection").html("<p>No elections in the near future available or error in address.<p>");
+    }
 
     //data for polling places
 
@@ -207,13 +209,10 @@ function pollingQuery (queryURLVoterInfo){
         console.log(response.election.electionDay);
         console.log(response.pollingLocations[p].address.locationName);
 
-
-    }
+    } 
 
 });
 }
-
-
 
 ///candidate function
 
@@ -357,7 +356,14 @@ function runRepresentativeQuery(queryURLRepresentatives){
         console.log(response);
 
         $("#wellSection").empty();
-        $("#lowerRow").css("display","flex");
+        $("#repResultRow").css("display","flex");
+        $("#polling").css("display","none");
+        $("#elections").css("display","none");
+        $("#secondLowestRow").css("display","none");
+        $("#lowestRow").css("display","none");
+        $("#lowerRow").css("display","none");
+        $("#repRow").css("display","none");
+
 
 
         for (var i=0; i<response.officials.length; i++){
