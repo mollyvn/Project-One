@@ -2,22 +2,28 @@ function initialize() {
     initMap();
     initAutocomplete();
 }
-var map, marker;
+
+var map, marker, geocoder;
+
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 35.9096484, lng: -78.8948735 },
         zoom: 8
     });
+    geocoder = new google.maps.Geocoder();
 }
+
 var placeSearch, autocomplete;
+
 var componentForm = {
-    street_number: 'short_name',
-    route: 'long_name',
-    locality: 'long_name',
-    administrative_area_level_1: 'short_name',
-    country: 'long_name',
-    postal_code: 'short_name'
+    // street_number: 'short_name',
+    // route: 'long_name',
+    // locality: 'long_name',
+    // administrative_area_level_1: 'short_name',
+    // country: 'long_name',
+    // postal_code: 'short_name'
 };
+
 function initAutocomplete() {
     autocomplete = new google.maps.places.Autocomplete(
         /** @type {!HTMLInputElement} */
@@ -78,4 +84,18 @@ function geolocate(autocomplete) {
             autocomplete.setBounds(circle.getBounds());
         });
     }
+}
+function codeAddress(address) {
+    // console.log(address);
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status === 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
 }
