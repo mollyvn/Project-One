@@ -59,7 +59,9 @@ h1.jumboText{
   }
 
   
-
+a {
+    color: #feda6a !important;
+}
 
 #electionBtn,
 #representBtn,
