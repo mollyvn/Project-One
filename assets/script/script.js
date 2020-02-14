@@ -221,12 +221,11 @@ function pollingQuery (queryURLVoterInfo){
 
 
     }
-    //somehow this variable needs to be used in Jonathan's map function
-    var pollingLocationforMaps =response.pollingLocations[0].address.locationName
-    // fillInAddress();
 
 });
 }
+
+
 
 ///candidate function
 
@@ -239,7 +238,7 @@ function candidateQuery(queryURLVoterInfo){
      $("#candidateSection").empty();
 
      //take out map and location etc
-     $("#lowestRow").css("display", "block");
+    $("#lowestRow").css("display", "block");
     $("#secondLowestRow").css("display","none");
     $("#lowerRow").css("display","none");
 
@@ -292,11 +291,8 @@ function candidateQuery(queryURLVoterInfo){
             }  else {
                 $("#candWell-"+c).css("box-shadow", "2px 2px 2px 2px gray");
             }
+        }     
         }
-        
-        }
-
-
     });
 }
 
@@ -422,9 +418,7 @@ function runRepresentativeQuery(queryURLRepresentatives){
             $("#repWell-"+i).append("<br></div></div>");
     
         }
-        
-    
-    
+
     });
     
     }
