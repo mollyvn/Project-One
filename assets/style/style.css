@@ -5,16 +5,12 @@
 
 
 .jumbotron {
-    /* background-color: #1d1e22; */
     background-color: #393f4d;
     color: #feda6a;
     text-shadow: black;
     text-align: center;
     font-size: 2em;
-   /* background-image: url("https://www.pexels.com/photo/abstract-architecture-building-exterior-geometric-593158/"); */
-   /* background-size: cover; */
-   
-
+    border-radius: 0; 
 }
 
 h1.jumboText{
@@ -24,6 +20,7 @@ h1.jumboText{
 .jumboText{
     font-size: 1.5em;
 }
+
 #upperRow,
 #lowerRow,
 #lowestRow,
@@ -41,7 +38,7 @@ h1.jumboText{
     height: 300px;
     width: 100%;
     border: 1px #feda6a solid;
-    border-radius: 5px;
+    /* border-radius: 5px; */
   }
 
   .panel{
@@ -50,8 +47,8 @@ h1.jumboText{
   }
 
   .panel-body{
-      margin: 10px;
-      padding: 10px;
+      margin: 5px;
+      padding: 5px;
   }
 
   .panel-heading{
@@ -59,7 +56,6 @@ h1.jumboText{
     color: #feda6a;
   }
 
-  
 
 #repSearchBtn,
 #electionBtn,
@@ -142,17 +138,13 @@ h4{
 h2 {
     text-align: center;
     font-size: 2em;
-    /* color: #393f4d; */
-    /* background-color: #393f4d; */
-    /* border-radius: 25px;  */
+
 }
 
 h3 {
     text-align: center;
     font-size: 2em;
-    /* color: #feda6a;
-    background-color: #393f4d;
-    border-radius: 25px;  */
+
 }
 
 header {
@@ -160,8 +152,9 @@ header {
 }
 
 body{
-    /* background-color: whitesmoke; */
+    background-color: whitesmoke;
     font-size:1.3em;
+    /* background-image: url("flag-of-america-1590766.jpg"); */
 
 }
 
@@ -178,7 +171,7 @@ body{
     text-align: center;
     padding: 16px;
     border: 1px solid gray;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     margin: 22px;
     width: 29%;
     background-color: lightgray;
@@ -209,7 +202,7 @@ body{
     text-align: center;
     padding: 16px;
     border: 1px solid gray;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     margin: 10px;
     width: 30%;
 
@@ -218,7 +211,7 @@ body{
 
 .tile.is-child{
     background-color: white;
-    box-shadow: 1px 1px 1px 1px lightgray;
+    box-shadow: 1px 1px 2px 2px lightgray;
 }
 
 .well{
