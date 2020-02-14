@@ -36,10 +36,6 @@ h1.jumboText{
    margin: 10px 10px 30px 10px;
 } 
 
-a {
-    color: #feda6a !important;
-}
-
 #map {
     height: 300px;
     width: 100%;
@@ -50,13 +46,11 @@ a {
   .panel{
       border-color:  #393f4d;
       box-shadow: 2px 2px 3px 3px #393f4d;
-      height: 300px;
   }
 
   .panel-body{
       margin: 10px;
       padding: 10px;
-      height: 300px;
   }
 
   .panel-heading{
@@ -66,39 +60,23 @@ a {
 
   
 
-#searchRepBtn{
-    margin: 20px;
-    background-color: #393f4d;
-    color: #feda6a;
-    border-color: #feda6a;
-    border-radius: 20px;
-    font-size: 20px;
-}
-#homeBtn{
-    margin: 20px;
-    background-color: #393f4d;
-    color: #feda6a;
-    border-color: #feda6a;
-    border-radius: 20px;
-    font-size: 20px;
-    float: right;
-} 
 
 #electionBtn,
 #representBtn,
+#searchRepBtn,
 #earlySearchBtn,
 #pollSearchBtn,
 #candSearchBtn{
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin:15px;
     background-color: #393f4d;
     color: #feda6a;
     border-color: #feda6a;
     border-radius: 20px;
-    font-size: 16px;
+    font-size: 15px;
     
 }  
-#backBtn {
+#backBtn,
+#homeBtn{
     float:right;
     margin:15px;
     background-color: #393f4d;
@@ -124,7 +102,6 @@ a {
     background-color: #393f4d;
     color: #feda6a;
     font-size:1.3em;
-    height: 300px;
 }
 
 
@@ -193,7 +170,6 @@ body{
 #electionSection{
     margin:20px;
     padding: 20px;
-    height: 300px;
 }
 
 .card{
