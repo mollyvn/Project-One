@@ -209,40 +209,6 @@ function pollingQuery (queryURLVoterInfo){
 
 
     }
-    //somehow this variable needs to be used in Jonathan's map function
-
-    var geocoder;
-    var map;
-    var address = response.pollingLocations[0].address.locationName;
-    geocoder = new google.maps.Geocoder();
-    function initMap() {
-        var uluru = { lat: -25.363, lng: 131.044 };
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
-            center: uluru
-        });
-        var marker = new google.maps.Marker({
-            position: uluru,
-            map: map
-        });
-        codeAddress(address);
-
-    }
-
-    function codeAddress(address) {
-
-        geocoder.geocode({ 'address': address }, function (results, status) {
-            if (status == 'OK') {
-                    var marker = new google.maps.Marker({
-                    position: address,
-                    map: map
-                });
-            } else {
-                alert('Geocode was not successful for the following reason: ' + status);
-            }
-        });
-    }
-    initMap();
 
 });
 }
