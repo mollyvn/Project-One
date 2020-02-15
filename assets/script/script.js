@@ -23,7 +23,7 @@ $(document).ready(function() {
     
     //button to open the rep section
 
-    $("#repSearchBtn").on("click", function(e){
+        $("#repSearchBtn").on("click", function(e){
         $("#repPopUp").css("display","block");
         // $("#upperRow").css("display","none");
         $("#repSearchBtn").css("display", "none");
@@ -166,17 +166,12 @@ function pollingQuery (queryURLVoterInfo){
     electionSection.attr('id', 'elWell');
     $('#elecSection').append(electionSection);
 
-    // if (response===!response) {
-    //     $("#elecSection").html("<p>Error: "+ response. error.errors[0].message);
-    // }
+    
+    // var elecName= response.election.name || response.error.errors[0].message;
 
     //Attach election content to approp section
     $("#elWell").append("<h2>Election: <br>"+ response.election.name+"</h2><br>");
     $("#elWell").append("<h2>Election Day: <br>"+ response.election.electionDay+"</h2>");
-
-    if (response==="error") {
-        $("#elecSection").html("<p>No elections in the near future available or error in address.<p>");
-    }
 
     //data for polling places
 
