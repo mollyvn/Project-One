@@ -227,7 +227,7 @@ $(document).ajaxError(function(){
     electionSection.attr('id', 'elWell');
     $('#elecSection').append(electionSection);
    //append error message
-    $("#elWell").append("<p>No election information available! This might be due to the missing information in the API (e.g. the state not updating the information) or an error in your entered address.</p>");
+    $("#elWell").append("<p>Currently, there is no election information available! This might be due to the fact that there is no election in the near future, due to missing information in the Google Civic Information API or an error in your entered address.</p>");
 
     var locationSection=$("<div>");
         locationSection.addClass("well");
@@ -235,7 +235,7 @@ $(document).ajaxError(function(){
         $("#pollSection").append(locationSection);
 
     //error message for missing polling location
-    $("#pollWell").append("<p>No polling Location information available! This might be due to the missing information in the API (e.g. the state not updating the information) or an error in your entered address.</p>");
+    $("#pollWell").append("<p>Currently, there is no polling location information available! This might be due to the fact that there is no election in the near future, due to missing information in the Google Civic Information API or an error in your entered address.</p>");
 
   });
 }
@@ -327,7 +327,7 @@ function candidateQuery(queryURLVoterInfo){
         candidateSection.attr('id', 'candWell' );
         $("#candidateSection").append(candidateSection);
        //append error message
-        $("#candWell").append("<p>No information available! This might be due to the missing information in the API (e.g. the state not updating the information) or an error in your entered address.</p>");
+        $("#candWell").append("<p>Currently, there is no candidate information available! This might be due to the fact that there is no election in the near future, due to missing information in the Google Civic Information API or an error in your entered address.</p>");
     
       });
 }
@@ -410,7 +410,7 @@ $(document).ajaxError(function(){
     earlySection.attr('id', 'earlyWell');
     $('#earlyVoteSection').append(earlySection);
    //append error message
-    $("#earlyWell").append("<p>No information available! This might be due to the missing information in the API (e.g. the state not updating the information) or an error in your entered address.</p>");
+    $("#earlyWell").append("<p>Currently, there is no early vote information available! This might be due to the fact that there is no election in the near future, due to missing information in the Google Civic Information API or an error in your entered address.</p>");
 
   });
 
@@ -494,9 +494,6 @@ function runRepresentativeQuery(queryURLRepresentatives){
         $("#repWell").append("<p>No information available! This might be due to the missing information in the API (e.g. the state not updating the information) or an error in your entered address.</p>");
     
       });
-
-      
-    
     }
 
 

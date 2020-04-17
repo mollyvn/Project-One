@@ -24,33 +24,8 @@ function initAutocomplete() {
         (document.getElementById('autocomplete')), {
         types: ['geocode']
     });
-    // autocomplete.addListener('place_changed', fillInAddress);
 }
 
-
-// function fillInAddress(autocomplete) {
-//     var place = autocomplete.getPlace();
-//     if (place.geometry.viewport) {
-//         map.fitBounds(place.geometry.viewport);
-//     }
-//     else {
-//         map.setCenter(place.geometry.location);
-//         map.setZoom(17);
-//     }
-//     if (!marker) {
-//         marker = new google.maps.Marker({
-//             map: map,
-//             anchorPoint: new google.maps.Point(0, -29)
-//         });
-//     }
-//     else
-//         marker.setMap(null);
-//     marker.setOptions({
-//         position: place.geometry.location,
-//         map: map
-//     });
-
-// }
 function geolocate() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
