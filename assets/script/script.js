@@ -24,15 +24,15 @@ $(document).ready(function() {
     //button to open the rep section
 
         $("#repSearchBtn").on("click", function(e){
-        $("#repPopUp").css("display","block");
-        // $("#upperRow").css("display","none");
-        $("#repSearchBtn").css("display", "none");
-        $("#earlySearchBtn").css("display","none");
-        $("#pollSearchBtn").css("display","none");
-        $("#candSearchBtn").css("display","none");
-        $("#backBtn").css("display","none");  
-        //don't display rows that areant rep rows
-        $("#lowestRow").css("display","none");  //candidate row
+            $("#repPopUp").css("display","block");
+            $("#lowerRow").css("display","none");
+            $("#repSearchBtn").css("display", "none");
+            $("#earlySearchBtn").css("display","none");
+            $("#pollSearchBtn").css("display","none");
+            $("#candSearchBtn").css("display","none");
+            $("#backBtn").css("display","none");  
+            //don't display rows that areant rep rows
+            $("#lowestRow").css("display","none");  //candidate row
     });
     
     //representatives click event
@@ -145,10 +145,11 @@ $(document).ready(function() {
 
 function pollingQuery (queryURLVoterInfo){
     console.log('polling function runs');
+    
     $.ajax({url: queryURLVoterInfo,
-        method: "GET"
+        method: "GET",
     }).then(function(response){  
-
+        // console.log("ajax complete")
      $("#elecSection").empty();
      $("#pollSection").empty();
 
@@ -168,7 +169,7 @@ function pollingQuery (queryURLVoterInfo){
 
     
     // var elecName= response.election.name || response.error.errors[0].message;
-
+    //     console.log(elecName);
     //Attach election content to approp section
     $("#elWell").append("<h2>Election: <br>"+ response.election.name+"</h2><br>");
     $("#elWell").append("<h2>Election Day: <br>"+ response.election.electionDay+"</h2>");
@@ -207,8 +208,37 @@ function pollingQuery (queryURLVoterInfo){
     } 
 
 });
-}
+$(document).ajaxError(function(){
+    $("#elecSection").empty();
+     $("#pollSection").empty();
+     $("candidateSection").empty();
 
+     //take out other rows
+     $("#lowerRow").css("display","flex");
+     $("#secondLowestRow").css("display","none");
+     $("#lowestRow").css("display","none");
+     $("#elections").css("display","block");
+     $("#mapSection").css("display","block");
+     $("#polling").css("display", "block");
+
+    //put into HTML
+    var electionSection=$('<div>');
+    electionSection.addClass("well");
+    electionSection.attr('id', 'elWell');
+    $('#elecSection').append(electionSection);
+   //append error message
+    $("#elWell").append("<p>Currently, there is no election information available! This might be due to the fact that there is no election in the near future, due to missing information in the Google Civic Information API or an error in your entered address.</p>");
+
+    var locationSection=$("<div>");
+        locationSection.addClass("well");
+        locationSection.attr('id', 'pollWell');
+        $("#pollSection").append(locationSection);
+
+    //error message for missing polling location
+    $("#pollWell").append("<p>Currently, there is no polling location information available! This might be due to the fact that there is no election in the near future, due to missing information in the Google Civic Information API or an error in your entered address.</p>");
+
+  });
+}
 ///candidate function
 
 function candidateQuery(queryURLVoterInfo){
@@ -276,6 +306,30 @@ function candidateQuery(queryURLVoterInfo){
         }     
         }
     });
+    $(document).ajaxError(function(){
+        $("#elecSection").empty();
+         $("#pollSection").empty();
+         $("candidateSection").empty();
+
+    
+         //take out other rows
+         $("#lowerRow").css("display","none");
+         $("#secondLowestRow").css("display","none");
+         $("#lowestRow").css("display","block");
+         $("#elections").css("display","none");
+         $("#mapSection").css("display","none");
+         $("#candidateSection").css("display","flex");
+
+    
+        //put into HTML
+        var candidateSection=$("<div>");
+        candidateSection.addClass("well");
+        candidateSection.attr('id', 'candWell' );
+        $("#candidateSection").append(candidateSection);
+       //append error message
+        $("#candWell").append("<p>Currently, there is no candidate information available! This might be due to the fact that there is no election in the near future, due to missing information in the Google Civic Information API or an error in your entered address.</p>");
+    
+      });
 }
 
 //early voting info
@@ -337,6 +391,29 @@ function earlyVoteQuery(queryURLVoterInfo){
     }
      
 });
+$(document).ajaxError(function(){
+    $("#elecSection").empty();
+     $("#pollSection").empty();
+     $("candidateSection").empty();
+
+
+     //take out other rows
+     $("#lowerRow").css("display","none");
+     $("#secondLowestRow").css("display","block");
+     $("#lowestRow").css("display","none");
+     $("#elections").css("display","none");
+     $("#mapSection").css("display","none");
+
+    //put into HTML
+    var earlySection=$('<div>');
+    earlySection.addClass("well");
+    earlySection.attr('id', 'earlyWell');
+    $('#earlyVoteSection').append(earlySection);
+   //append error message
+    $("#earlyWell").append("<p>Currently, there is no early vote information available! This might be due to the fact that there is no election in the near future, due to missing information in the Google Civic Information API or an error in your entered address.</p>");
+
+  });
+
 }
 
 //representative function 
@@ -397,7 +474,26 @@ function runRepresentativeQuery(queryURLRepresentatives){
         }
 
     });
+    $(document).ajaxError(function(){
+        $("#elecSection").empty();
+         $("#pollSection").empty();
     
+         //take out other rows
+         $("#lowerRow").css("display","flex");
+         $("#secondLowestRow").css("display","none");
+         $("#lowestRow").css("display","none");
+         $("#elections").css("display","block");
+         $("#mapSection").css("display","none");
+    
+        //put into HTML
+      var wellSection=$('<div>');
+      wellSection.addClass("card");
+      wellSection.attr('id', 'repWell');
+      $('#wellSection').append(wellSection);
+       //append error message
+        $("#repWell").append("<p>No information available! This might be due to the missing information in the API (e.g. the state not updating the information) or an error in your entered address.</p>");
+    
+      });
     }
 
 

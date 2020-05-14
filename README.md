@@ -1,46 +1,77 @@
-# Project-One
-#Know Your Vote Application
+# Know Your Vote
 
+![Github license](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-This application was built with the purpose of providing a user's (input based) source for political information such as voting candidates, polling locations, 
-and current representives.  
+## Table of Content
 
-When the user opens the application, they are taken to the index page where the site objectives are located and a link to proceed forward is provided for 
-further information.
+*[User Story](#User)
 
-On the polling page the user can begin to enter their address to obtain personalize information. Clicking on the address bar will immediately ask for 
-geolocation permission in order to personalize their request. Then, their address is used to feed the Maps and Civic Info API's for further information 
-requests regarding: 
+*[Description](#Description)
 
--Polling Location
--Early Voting
--Candidates on Ballot
--Current Representantives
+*[Installation](#Installation)
 
-A second row with the related information appears when each link is chosen.
+*[Usage](#Usage)
 
-The polling information contains the election name and the date the election occurs, displays a map and a pin that allows the user to locate their designated 
-polling location based on their home address, nearest voting location in accordance with thier home address, and a section that states the polling location 
-name and hours.
+*[Future Improvements](#Future)
 
-The early voting information provides the user with information pertaining to early voting: location, days, and hours. 
-When the user opens the application, they are taken to the index page that describes the purpose of the application. The "Know Your Vote" Button can be 
-clicked and starts the apllication.  
+*[Technologies](#Technologies)
 
-Once on the polling.html,,the user will input their street address in the search box above the map that allows the application to pull from the api. On that 
-page, the user will input his/her street address in the search box which will auto fill, if the user allows geolocation. The address is used to pull user 
-specific information from the api and depending on the button the user clicks: 
+*[Deployed Link](#Deployed)
 
--Polling Location,
--Early Voting,
--Candidates on Ballot and
--Current Representatives.
+*[Contribution](#Contribution)
 
-By clicking the specific button the user will be provided with specific information related to the request.
+*[Questions](#Questions)
 
-The candidate information presents each cardidate in a card. The cards are sorted by office and party. The card color is related to their party affiliation.
+*[Team](#Team)
 
-The representative information presents current office holders, their photo, and a URL for further information.
+## User Story
+
+```
+As a registered voter I want to be able to quickly access information about polling locations, early voting hours, candidates on the ballot, and my current representatives so that I make an informed decision when I am ready to vote.
+```
+
+## Description
+
+'Know Your Vote' is an application that allows a user to look up information about polling location, hours, early vote hours and locations, candidates on the ballot (and their affiliation) and his/her current representatives, specified by an entered address. This application makes use of the third party APIs Google Civic Information and Google Maps and was created as a team project using Bootstrap, Bulma, JavaScript, JQuery and AJAX requests. The Google Civic Information API provides information shortly before an election occurs, but might not deliver any information if the election is not occurring any time soon or the state has not provided updated information. 
+
+## Installation
+
+Clone the repository to your computer and open the index.html file in your browser. 
+
+## Usage
+
+The index.html landing page will provide a short description of the application and a "Know Your Vote" button. Once the button is clicked, the user will be lead to the polling.html where the user can provide his/her address, which will autofill, and can select to receive information about :
+
+1. Polling Location: If this button is clicked and the Google Civic API currently provides information due to an upcoming election, the user will receive the name and date of the upcoming election, the address of his/her closest polling location as well as the hours and a map with a pin that shows the polling location.
+
+2. Early Voting: If this button is clicked, the user will receive information about the early voting locations, days and hours.
+
+3. Candidates on Ballot: If this button is clicked the user will receive information about all candidates on the ballot specific to his entered address, color coded by party affiliation.
+
+4. Current Representatives: The information received after clicking this button is unrelated to upcoming elections and the Google Civic Information API should provide this information even if no election is coming up. If this button is clicked, additional selections, such as Levels and Roles can be made to receive specific information about current representatives.
+
+## Future Improvements
+
+Future Improvements should include improved error handling and potentially adding another API for more detailed information and to add pictures for representatives with a missing image in the Google Civic API.
+
+## Deployed Link
+
+The deployed link: <a href="https://steffield.github.io/Know-Your-Vote/">Election Info Application</a>
 
 <img src ="./assets/images/appCurrentDesign.png">
-<a href="https://mvn410.github.io/Project-One/">Election Info Application</a>
+
+## Technologies
+
+HTML, CSS, JavaScript, jQuery, Bulma CSS Framework, Bootstrap CSS Framework, Google Civic API, Google Maps API.
+
+## Contribution
+
+Pull requests are welcome. Code of Conduct: Standard (Fork, Clone, Commit, Push and Create Pull requests).
+
+## Questions
+
+If you have any questions about the repo, open an issue.
+
+## Team
+
+<img src="https://avatars0.githubusercontent.com/u/56233744?v=4" width ="50px" height="50px">  <img src="https://avatars3.githubusercontent.com/u/47950206?s=400&u=681e1ba0c36a7616c4b725b7eaa5d7e3a8fd1792&v=4" width ="50px" height="50px">  <img src="https://avatars2.githubusercontent.com/u/58318559?s=400&u=63867c02cab88408b90435182d87d4569f8095f2&v=4" width ="50px" height="50px">  <img src="https://avatars0.githubusercontent.com/u/58635628?s=400&u=74271d5cc9ef31824e6f94f1cbe266d3b4130f97&v=4" width ="50px" height="50px">
